@@ -1,211 +1,98 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>汽车知识图谱 - 自然语言查询</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-car-side"></i>
-                <span>汽车知识图谱</span>
+<body class="bg-white text-slate-900">
+
+    <nav class="border-b border-gray-200 sticky top-0 bg-white/90 backdrop-blur z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-[#EE4C2C] rounded-sm"></div> <span class="font-bold text-xl tracking-tight">DEV.LOG</span>
             </div>
-            <div class="tagline">用自然语言查询汽车详细信息，例如"15万左右的SUV推荐"、"最省油的混动车型"</div>
-        </header>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#" class="hover:text-[#EE4C2C]">Get Started</a>
+                <a href="#" class="text-[#EE4C2C]">Blog</a> <a href="#" class="hover:text-[#EE4C2C]">Docs</a>
+                <a href="#" class="hover:text-[#EE4C2C]">Github</a>
+            </div>
+        </div>
+    </nav>
 
-        <main class="main-content">
-            <section class="search-section">
-                <div class="search-container">
-                    <div class="search-box">
-                        <input type="text" id="query-input" placeholder="输入您的自然语言查询，例如：15万左右的SUV推荐..." autocomplete="off">
-                        <button id="search-btn" class="search-btn">
-                            <i class="fas fa-search"></i>
+    <div class="bg-slate-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
+                        From <span class="text-[#EE4C2C]">Zero</span> to <span class="text-[#EE4C2C]">Hero</span>.
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        An open source personal knowledge base. Documenting the journey through Artificial Intelligence, Full Stack Development, and everything in between.
+                    </p>
+                    <div class="flex gap-4">
+                        <button class="bg-[#EE4C2C] text-white px-6 py-3 rounded font-semibold hover:bg-[#d43f23] transition">
+                            Latest Posts
                         </button>
-                    </div>
-                    <div class="example-queries">
-                        <span>热门查询：</span>
-                        <div class="query-tags">
-                            <span class="query-tag">15万左右的SUV</span>
-                            <span class="query-tag">最省油的家用车</span>
-                            <span class="query-tag">新能源SUV排行榜</span>
-                            <span class="query-tag">适合家庭的MPV</span>
-                            <span class="query-tag">20万以内高评分轿车</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="results-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-list"></i> 查询结果 <span id="result-count">(0)</span></h2>
-                    <div class="view-toggle">
-                        <button id="list-view" class="view-btn active">
-                            <i class="fas fa-list"></i> 列表
-                        </button>
-                        <button id="grid-view" class="view-btn">
-                            <i class="fas fa-th-large"></i> 网格
+                        <button class="border border-slate-300 text-slate-700 px-6 py-3 rounded font-semibold hover:bg-white transition">
+                            Read Docs
                         </button>
                     </div>
                 </div>
-                <div class="results-container" id="results-container">
-                    <div class="empty-state">
-                        <i class="fas fa-search-location"></i>
-                        <h3>开始您的汽车探索之旅</h3>
-                        <p>在上方搜索框输入自然语言查询，例如"15万左右的SUV推荐"</p>
-                        <div class="example-cards">
-                            <div class="example-card">
-                                <div class="example-content">
-                                    <h4>"15万左右的SUV有哪些?"</h4>
-                                    <p>系统将返回15万价格区间的SUV车型列表</p>
-                                </div>
-                            </div>
-                            <div class="example-card">
-                                <div class="example-content">
-                                    <h4>"最省油的混动车型"</h4>
-                                    <p>系统将返回油耗最低的混合动力车型</p>
-                                </div>
-                            </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 font-mono text-sm">
+                    <div class="mb-4 pb-4 border-b border-gray-100">
+                        <div class="text-xs text-slate-400 uppercase tracking-wider mb-2">Select Topic</div>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="px-3 py-1 bg-[#EE4C2C]/10 text-[#EE4C2C] border border-[#EE4C2C] rounded">All</button>
+                            <button class="px-3 py-1 text-slate-600 hover:bg-slate-100 rounded">AI & ML</button>
+                            <button class="px-3 py-1 text-slate-600 hover:bg-slate-100 rounded">Web Dev</button>
+                            <button class="px-3 py-1 text-slate-600 hover:bg-slate-100 rounded">Quantum</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider mb-2">Preview Code</div>
+                        <div class="bg-slate-900 text-slate-300 p-4 rounded overflow-x-auto">
+                            <span class="text-[#EE4C2C]">import</span> torch<br>
+                            <span class="text-purple-400">def</span> <span class="text-blue-400">learn_tech</span>():<br>
+                            &nbsp;&nbsp;topic = <span class="text-green-400">"Neural Networks"</span><br>
+                            &nbsp;&nbsp;print(f"Loading {topic}...")
                         </div>
                     </div>
                 </div>
-                <div class="pagination" id="pagination">
-                    <button class="prev disabled"><i class="fas fa-arrow-left"></i></button>
-                    <span class="page-info">第 <span id="current-page">1</span> 页，共 <span id="total-pages">1</span> 页</span>
-                    <button class="next disabled"><i class="fas fa-arrow-right"></i></button>
-                </div>
-            </section>
-
-            <section class="advanced-filters">
-                <details>
-                    <summary><i class="fas fa-sliders-h"></i> 高级筛选</summary>
-                    <div class="filter-container">
-                        <div class="filter-group">
-                            <label for="price-range">价格范围 (万元)</label>
-                            <div class="range-slider">
-                                <input type="range" id="price-min" min="0" max="100" value="0">
-                                <input type="range" id="price-max" min="0" max="100" value="50">
-                                <div class="range-values">
-                                    <span id="min-value">0</span> - <span id="max-value">50</span> 万元
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-group">
-                            <label>车型类型</label>
-                            <div class="checkbox-group">
-                                <label><input type="checkbox" value="suv"> SUV</label>
-                                <label><input type="checkbox" value="sedan"> 轿车</label>
-                                <label><input type="checkbox" value="mpv"> MPV</label>
-                                <label><input type="checkbox" value="hatchback"> 两厢车</label>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-group">
-                            <label>能源类型</label>
-                            <div class="checkbox-group">
-                                <label><input type="checkbox" value="fuel"> 燃油车</label>
-                                <label><input type="checkbox" value="hybrid"> 混动/插混</label>
-                                <label><input type="checkbox" value="electric"> 纯电动车</label>
-                            </div>
-                        </div>
-                        
-                        <button class="apply-filter-btn" id="apply-filters">应用筛选</button>
-                    </div>
-                </details>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div class="footer-content">
-                <p>🚗 汽车知识图谱自然语言查询系统</p>
-                <p>基于Neo4j和MongoDB构建的知识图谱，支持自然语言交互</p>
-                <div class="footer-links">
-                    <a href="#" id="show-about">关于系统</a>
-                    <a href="#" id="show-api">API文档</a>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- 模态框：关于系统 -->
-    <div class="modal" id="about-modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>关于汽车知识图谱系统</h2>
-            <p>本系统是一个基于知识图谱的汽车信息查询平台，允许用户使用自然语言查询汽车详细信息。</p>
-            <div class="features">
-                <h3>核心功能</h3>
-                <ul>
-                    <li>自然语言查询处理</li>
-                    <li>多维度汽车信息展示</li>
-                    <li>智能推荐和排序</li>
-                    <li>高级筛选和过滤</li>
-                    <li>详细车型对比</li>
-                </ul>
-            </div>
-            <div class="tech-stack">
-                <h3>技术架构</h3>
-                <ul>
-                    <li>前端：HTML/CSS/JavaScript (GitHub Pages)</li>
-                    <li>后端：Python Flask</li>
-                    <li>数据库：Neo4j (知识图谱) + MongoDB (文档存储)</li>
-                    <li>NLP处理：自定义自然语言解析器</li>
-                </ul>
             </div>
         </div>
     </div>
 
-    <!-- 模态框：API文档 -->
-    <div class="modal" id="api-modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>API文档</h2>
-            <div class="api-endpoint">
-                <h3>查询API</h3>
-                <p><strong>URL:</strong> <code>https://your-backend-domain.com/api/query</code></p>
-                <p><strong>Method:</strong> POST</p>
-                <p><strong>Content-Type:</strong> application/json</p>
-                <h4>Request Body:</h4>
-                <pre>{
-    "query": "用户输入的自然语言查询",
-    "filters": {
-        "price_min": 0,
-        "price_max": 50,
-        "vehicle_types": ["suv"],
-        "energy_types": ["hybrid"]
-    },
-    "page": 1,
-    "page_size": 10
-}</pre>
-                <h4>Response:</h4>
-                <pre>{
-    "success": true,
-    "results": [
-        {
-            "name": "车型名称",
-            "brand": "品牌",
-            "category": "级别",
-            "price_range": "价格区间",
-            "rating": 4.5,
-            "energy_type": "能源类型",
-            "engine": "发动机信息",
-            "transmission": "变速箱信息",
-            "detail_url": "详情链接"
-        }
-    ],
-    "total": 25,
-    "page": 1,
-    "page_size": 10
-}</pre>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 class="text-2xl font-bold mb-8">Recent Updates</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="group block border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-[#EE4C2C]/50 transition cursor-pointer">
+                <div class="text-xs font-bold text-[#EE4C2C] mb-2 uppercase">Tutorial</div>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-[#EE4C2C]">Implementing Transformers from Scratch</h3>
+                <p class="text-slate-600 text-sm mb-4">A deep dive into the attention mechanism using PyTorch.</p>
+                <div class="text-xs text-slate-400">Jan 23, 2026 &bull; 10 min read</div>
+            </div>
+            
+            <div class="group block border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-[#EE4C2C]/50 transition cursor-pointer">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase">Project</div>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-[#EE4C2C]">Chrome Extension Development</h3>
+                <p class="text-slate-600 text-sm mb-4">How to communicate between background scripts and content scripts.</p>
+                <div class="text-xs text-slate-400">Jan 20, 2026 &bull; 5 min read</div>
+            </div>
+
+            <div class="group block border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-[#EE4C2C]/50 transition cursor-pointer">
+                <div class="text-xs font-bold text-purple-600 mb-2 uppercase">Research</div>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-[#EE4C2C]">Quantum Machine Learning</h3>
+                <p class="text-slate-600 text-sm mb-4">Exploring Variational Quantum Eigensolvers.</p>
+                <div class="text-xs text-slate-400">Jan 15, 2026 &bull; 15 min read</div>
             </div>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
 </body>
 </html>
