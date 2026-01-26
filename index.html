@@ -1,66 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Notes - Tech Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .pytorch-orange { color: #EE4C2C; }
+        .bg-pytorch-orange { background-color: #EE4C2C; }
+        .border-pytorch-orange { border-color: #EE4C2C; }
+        
+        /* 卡片淡入动画 */
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 视频容器样式 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
-<body class="bg-white text-slate-900">
+<body class="bg-white text-slate-900 flex flex-col min-h-screen">
 
-    <nav class="border-b border-gray-200 sticky top-0 bg-white/90 backdrop-blur z-50">
+    <nav class="border-b border-gray-200 sticky top-0 bg-white/95 backdrop-blur z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-[#EE4C2C] rounded-sm"></div> <span class="font-bold text-xl tracking-tight">DEV.LOG</span>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-[#EE4C2C] flex items-center justify-center rounded-sm">
+                    <i data-lucide="zap" class="text-white w-5 h-5"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">NEURAL<span class="text-[#EE4C2C]">NOTES</span></span>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-                <a href="#" class="hover:text-[#EE4C2C]">Get Started</a>
-                <a href="#" class="text-[#EE4C2C]">Blog</a> <a href="#" class="hover:text-[#EE4C2C]">Docs</a>
-                <a href="#" class="hover:text-[#EE4C2C]">Github</a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#projects" class="hover:text-[#EE4C2C] transition-colors">Projects</a>
+                <a href="#blog" class="text-[#EE4C2C]">Blog & Tutorials</a>
+                <a href="#" class="hover:text-[#EE4C2C] transition-colors">About Me</a>
+                <div class="h-4 w-px bg-gray-300"></div> <a href="https://github.com" target="_blank" class="hover:text-black transition-colors flex items-center gap-2">
+                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                </a>
+                <button class="bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-700 transition shadow-sm">
+                    Subscribe
+                </button>
             </div>
         </div>
     </nav>
 
-    <div class="bg-slate-50 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h1 class="text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
-                        From <span class="text-[#EE4C2C]">Zero</span> to <span class="text-[#EE4C2C]">Hero</span>.
+    <div class="bg-slate-50 border-b border-gray-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-[#EE4C2C] text-xs font-bold uppercase tracking-wider mb-6">
+                        <span class="w-2 h-2 rounded-full bg-[#EE4C2C]"></span> Open for Internship
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+                        Building the <br>
+                        <span class="text-[#EE4C2C]">Digital Frontier</span>.
                     </h1>
-                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
-                        An open source personal knowledge base. Documenting the journey through Artificial Intelligence, Full Stack Development, and everything in between.
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg">
+                        Exploring the intersection of <strong>Quantum Computing</strong>, <strong>AI</strong>, and <strong>Web Engineering</strong>. Documenting my journey from research papers to production code.
                     </p>
-                    <div class="flex gap-4">
-                        <button class="bg-[#EE4C2C] text-white px-6 py-3 rounded font-semibold hover:bg-[#d43f23] transition">
-                            Latest Posts
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="document.getElementById('content-section').scrollIntoView({behavior: 'smooth'})" 
+                                class="flex items-center justify-center gap-2 bg-[#EE4C2C] text-white px-8 py-3.5 rounded font-semibold hover:bg-[#d43f23] transition shadow-lg shadow-orange-500/20">
+                            Explore Content <i data-lucide="arrow-down" class="w-4 h-4"></i>
                         </button>
-                        <button class="border border-slate-300 text-slate-700 px-6 py-3 rounded font-semibold hover:bg-white transition">
-                            Read Docs
+                        <button class="flex items-center justify-center gap-2 border border-slate-300 bg-white text-slate-700 px-8 py-3.5 rounded font-semibold hover:bg-gray-50 transition">
+                            <i data-lucide="file-text" class="w-4 h-4"></i> View Resume
                         </button>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 font-mono text-sm">
-                    <div class="mb-4 pb-4 border-b border-gray-100">
-                        <div class="text-xs text-slate-400 uppercase tracking-wider mb-2">Select Topic</div>
-                        <div class="flex flex-wrap gap-2">
-                            <button class="px-3 py-1 bg-[#EE4C2C]/10 text-[#EE4C2C] border border-[#EE4C2C] rounded">All</button>
-                            <button class="px-3 py-1 text-slate-600 hover:bg-slate-100 rounded">AI & ML</button>
-                            <button class="px-3 py-1 text-slate-600 hover:bg-slate-100 rounded">Web Dev</button>
-                            <button class="px-3 py-1 text-slate-600 hover:bg-slate-100 rounded">Quantum</button>
+                <div class="relative group">
+                    <div class="absolute -top-20 -right-20 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
+                    <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
+
+                    <div class="relative bg-slate-900 rounded-xl shadow-2xl overflow-hidden border border-slate-700 transform transition duration-500 hover:scale-[1.01]">
+                        <div class="bg-slate-800 px-4 py-3 flex items-center gap-2 border-b border-slate-700">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="ml-4 text-xs text-slate-400 font-mono">demo_project.mp4</div>
                         </div>
-                    </div>
-                    
-                    <div>
-                        <div class="text-xs text-slate-400 uppercase tracking-wider mb-2">Preview Code</div>
-                        <div class="bg-slate-900 text-slate-300 p-4 rounded overflow-x-auto">
-                            <span class="text-[#EE4C2C]">import</span> torch<br>
-                            <span class="text-purple-400">def</span> <span class="text-blue-400">learn_tech</span>():<br>
-                            &nbsp;&nbsp;topic = <span class="text-green-400">"Neural Networks"</span><br>
-                            &nbsp;&nbsp;print(f"Loading {topic}...")
+                        <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tech Background" class="object-cover w-full h-full opacity-60">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="w-16 h-16 bg-[#EE4C2C] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition cursor-pointer">
+                                    <i data-lucide="play" class="text-white w-6 h-6 fill-current ml-1"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -68,31 +119,198 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 class="text-2xl font-bold mb-8">Recent Updates</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="group block border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-[#EE4C2C]/50 transition cursor-pointer">
-                <div class="text-xs font-bold text-[#EE4C2C] mb-2 uppercase">Tutorial</div>
-                <h3 class="text-lg font-bold mb-2 group-hover:text-[#EE4C2C]">Implementing Transformers from Scratch</h3>
-                <p class="text-slate-600 text-sm mb-4">A deep dive into the attention mechanism using PyTorch.</p>
-                <div class="text-xs text-slate-400">Jan 23, 2026 &bull; 10 min read</div>
-            </div>
+    <div id="content-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                <i data-lucide="filter" class="w-5 h-5 text-[#EE4C2C]"></i> Filter Content
+            </h2>
             
-            <div class="group block border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-[#EE4C2C]/50 transition cursor-pointer">
-                <div class="text-xs font-bold text-blue-600 mb-2 uppercase">Project</div>
-                <h3 class="text-lg font-bold mb-2 group-hover:text-[#EE4C2C]">Chrome Extension Development</h3>
-                <p class="text-slate-600 text-sm mb-4">How to communicate between background scripts and content scripts.</p>
-                <div class="text-xs text-slate-400">Jan 20, 2026 &bull; 5 min read</div>
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                <div class="flex flex-col sm:flex-row border-b border-gray-100">
+                    <div class="w-full sm:w-32 bg-slate-50 p-4 text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center border-b sm:border-b-0 sm:border-r border-gray-100">
+                        Domain
+                    </div>
+                    <div class="p-4 flex flex-wrap gap-3" id="domain-filters">
+                        <button class="filter-btn active px-4 py-2 rounded text-sm font-medium transition-all" data-filter="all">All</button>
+                        <button class="filter-btn px-4 py-2 rounded text-sm font-medium transition-all" data-filter="ai">Artificial Intelligence</button>
+                        <button class="filter-btn px-4 py-2 rounded text-sm font-medium transition-all" data-filter="web">Web Development</button>
+                        <button class="filter-btn px-4 py-2 rounded text-sm font-medium transition-all" data-filter="quantum">Quantum Computing</button>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row">
+                    <div class="w-full sm:w-32 bg-slate-50 p-4 text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center border-b sm:border-b-0 sm:border-r border-gray-100">
+                        Type
+                    </div>
+                    <div class="p-4 flex flex-wrap gap-3">
+                        <button class="px-4 py-2 rounded text-sm font-medium text-slate-600 hover:bg-slate-100 border border-transparent hover:border-slate-200 transition-all">Tutorial</button>
+                        <button class="px-4 py-2 rounded text-sm font-medium text-slate-600 hover:bg-slate-100 border border-transparent hover:border-slate-200 transition-all">Project Log</button>
+                        <button class="px-4 py-2 rounded text-sm font-medium text-slate-600 hover:bg-slate-100 border border-transparent hover:border-slate-200 transition-all">Research Note</button>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="group block border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-[#EE4C2C]/50 transition cursor-pointer">
-                <div class="text-xs font-bold text-purple-600 mb-2 uppercase">Research</div>
-                <h3 class="text-lg font-bold mb-2 group-hover:text-[#EE4C2C]">Quantum Machine Learning</h3>
-                <p class="text-slate-600 text-sm mb-4">Exploring Variational Quantum Eigensolvers.</p>
-                <div class="text-xs text-slate-400">Jan 15, 2026 &bull; 15 min read</div>
-            </div>
+        <div id="grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <article class="content-card group border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 bg-white" data-category="ai">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80" alt="AI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-[#EE4C2C]">AI / RESEARCH</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-[#EE4C2C] transition-colors">Sliding Mode Control in USVs</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">
+                        An in-depth look at implementing path tracking algorithms for Unmanned Surface Vehicles using adaptive sliding mode control.
+                    </p>
+                    <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+                        <span class="text-xs text-slate-400 font-mono">Jan 24, 2026</span>
+                        <a href="#" class="text-sm font-bold text-[#EE4C2C] flex items-center gap-1 hover:gap-2 transition-all">
+                            Read Post <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="content-card group border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 bg-white" data-category="web">
+                <div class="h-48 overflow-hidden relative">
+                    <div class="w-full h-full bg-slate-900 flex items-center justify-center font-mono text-green-400 text-sm p-4">
+                        &lt;chrome.runtime.onMessage /&gt;
+                    </div>
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-blue-600">WEB DEV</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-[#EE4C2C] transition-colors">Mastering Chrome Extensions</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">
+                        Building a DOM highlighter plugin. Solving the communication gap between content scripts and background service workers.
+                    </p>
+                    <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+                        <span class="text-xs text-slate-400 font-mono">Jan 22, 2026</span>
+                        <a href="#" class="text-sm font-bold text-[#EE4C2C] flex items-center gap-1 hover:gap-2 transition-all">
+                            View Code <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="content-card group border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 bg-white" data-category="quantum">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80" alt="Quantum" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-purple-600">QUANTUM</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-[#EE4C2C] transition-colors">Intro to Quantum ML</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">
+                        Exploring Variational Quantum Eigensolvers (VQE) and how to implement them using Python.
+                    </p>
+                    <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+                        <span class="text-xs text-slate-400 font-mono">Jan 12, 2026</span>
+                        <a href="#" class="text-sm font-bold text-[#EE4C2C] flex items-center gap-1 hover:gap-2 transition-all">
+                            Read Post <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="content-card group border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 bg-white" data-category="ai">
+                 <div class="h-48 bg-gray-50 flex items-center justify-center relative">
+                    <i data-lucide="brain-circuit" class="w-16 h-16 text-gray-300 group-hover:text-[#EE4C2C] transition-colors"></i>
+                    <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded border border-gray-200 text-xs font-bold text-[#EE4C2C]">AI</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-[#EE4C2C] transition-colors">Attention is All You Need</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">
+                        Re-implementing the Transformer architecture from scratch to understand the math behind Multi-Head Attention.
+                    </p>
+                    <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+                        <span class="text-xs text-slate-400 font-mono">Dec 20, 2025</span>
+                        <a href="#" class="text-sm font-bold text-[#EE4C2C] flex items-center gap-1 hover:gap-2 transition-all">
+                            Read Post <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
         </div>
     </div>
 
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <span class="font-bold text-xl text-white tracking-tight mb-4 block">NEURAL<span class="text-[#EE4C2C]">NOTES</span></span>
+                <p class="text-sm max-w-xs">
+                    Designed with <span class="text-[#EE4C2C]">♥</span> for the open source community. 
+                    Built to share knowledge in Engineering and Artificial Intelligence.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Resources</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition">PyTorch Docs</a></li>
+                    <li><a href="#" class="hover:text-white transition">React Docs</a></li>
+                    <li><a href="#" class="hover:text-white transition">Quantum SDK</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Connect</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Twitter / X</a></li>
+                    <li><a href="#" class="hover:text-white transition">LinkedIn</a></li>
+                    <li><a href="#" class="hover:text-white transition">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. 初始化图标
+        lucide.createIcons();
+
+        // 2. 交互式筛选逻辑 (The Matrix Logic)
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.content-card');
+
+        // 设置按钮的激活样式类
+        const activeClass = "bg-[#EE4C2C] text-white border-[#EE4C2C]";
+        const inactiveClass = "text-slate-600 bg-slate-50 hover:bg-slate-100 border-transparent";
+
+        // 初始化按钮样式
+        filterBtns.forEach(btn => {
+            if(btn.classList.contains('active')) {
+                btn.className = `filter-btn ${activeClass} px-4 py-2 rounded text-sm font-medium border transition-all`;
+            } else {
+                btn.className = `filter-btn ${inactiveClass} px-4 py-2 rounded text-sm font-medium border transition-all`;
+            }
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // A. 处理按钮样式
+                filterBtns.forEach(b => {
+                    b.className = `filter-btn ${inactiveClass} px-4 py-2 rounded text-sm font-medium border transition-all`;
+                });
+                btn.className = `filter-btn ${activeClass} px-4 py-2 rounded text-sm font-medium border transition-all`;
+
+                // B. 处理卡片筛选
+                const filterValue = btn.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    
+                    // 重置动画
+                    card.classList.remove('fade-in');
+                    void card.offsetWidth; // 触发回流(reflow)以重启动画
+
+                    if (filterValue === 'all' || filterValue === cardCategory) {
+                        card.style.display = 'block';
+                        card.classList.add('fade-in'); // 添加出现动画
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
