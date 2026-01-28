@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QAIDAO 道一 | Quantum Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* 隐藏滚动条但保留功能 */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* 磨砂玻璃导航 */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* 极简卡片悬停效果 */
+        .hover-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+        }
+
+        /* 动态背景光斑 */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: move 10s infinite alternate;
+        }
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(20px, -20px) scale(1.1); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-[#EE4C2C] selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="./images/logo.png" alt="Nexus Tech Logo" class="h-10 w-auto object-contain">
+                </a>
+
+                <div class="hidden md:flex items-center space-x-10 text-sm font-medium text-slate-500">
+                    <a href="#solutions" class="hover:text-[#EE4C2C] transition-colors">解决方案</a>
+                    <a href="#team" class="hover:text-[#EE4C2C] transition-colors">团队成员</a>
+                    <a href="#about" class="hover:text-[#EE4C2C] transition-colors">关于项目</a>
+                </div>
+
+                <a href="https://pypi.org/project/openquantum/" target="_blank" class="flex items-center gap-2 text-sm font-medium text-slate-900 hover:text-[#EE4C2C] transition-colors">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                    <span class="hidden sm:inline">Open Source</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="blob bg-purple-200 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2"></div>
+        <div class="blob bg-orange-100 w-96 h-96 rounded-full bottom-0 right-0 translate-x-1/3"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="max-w-2xl">
+                    <h1 class="text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1]">
+                        Quantum <br>
+                        <span class="text-[#EE4C2C]">Intelligence</span>.
+                    </h1>
+                    <p class="text-xl text-slate-500 mb-10 leading-relaxed font-light">
+                        我们致力于构建下一代量子计算硬件与人工智能解决方案的混合架构。将先进和划时代的材料设计能力转化为简洁、可靠的产品。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#solutions" class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-white transition-all bg-[#EE4C2C] rounded-lg hover:bg-[#d93a1b] hover:shadow-lg hover:shadow-orange-500/30">
+                            探索方案
+                        </a>
+                        <a href="#about" class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-slate-600 transition-all bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300">
+                            静待更新
+                        </a>
+                    </div>
+                </div>
+
+                <a href="https://github.com" target="_blank" class="block relative rounded-2xl overflow-hidden shadow-2xl shadow-slate-200/50 bg-slate-900 aspect-video group cursor-pointer hover:ring-4 hover:ring-[#EE4C2C]/30 transition-all">
+                    <video class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800">
+                        <source src="./videos/show.mp4" type="video/mp4">
+                    </video>
+                    
+                    <div class="absolute bottom-6 left-6">
+                        <div class="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg">
+                            <p class="text-xs text-white font-mono tracking-wider">QAIDAO SHOW</p>
+                        </div>
+                    </div>
+                    
+                    </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="border-y border-slate-200 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                <div class="space-y-2">
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">10+</div>
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Years AI4S</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">500w+</div>
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Funding</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">5+</div>
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Ventures</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">10+</div>
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="py-24 max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">核心产品</h2>
+                <p class="text-slate-500 max-w-xl">
+                    从底层硬件控制到上层数据分析，我们提供全栈式的技术服务。
+                </p>
+            </div>
+            
+            <div class="flex gap-2 bg-slate-100 p-1 rounded-lg">
+                <button class="filter-btn active px-4 py-1.5 text-sm font-medium rounded-md transition-all" data-filter="all">全部</button>
+                <button class="filter-btn px-4 py-1.5 text-sm font-medium rounded-md transition-all text-slate-500 hover:text-slate-900" data-filter="hardware">硬件</button>
+                <button class="filter-btn px-4 py-1.5 text-sm font-medium rounded-md transition-all text-slate-500 hover:text-slate-900" data-filter="software">软件</button>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="hover-card group bg-white rounded-2xl border border-slate-100 overflow-hidden cursor-default" data-category="software">
+                <div class="h-64 overflow-hidden bg-slate-100">
+                    <img src=".\images\Qwen.png" alt="Robot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <div class="text-xs font-bold text-[#EE4C2C] mb-3 uppercase tracking-wider">LLMs Driven</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">大模型驱动全栈方案</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        基于开源大模型技术实现全栈方案。
+                    </p>
+                </div>
+            </div>
+
+            <div class="hover-card group bg-white rounded-2xl border border-slate-100 overflow-hidden cursor-default" data-category="hardware">
+                <div class="h-64 overflow-hidden bg-slate-900 flex items-center justify-center">
+                    <div class="font-mono text-xs text-green-400 opacity-70 p-8">
+                        > initializing core...<br>
+                        > loading modules [OK]<br>
+                        > starting dashboard...
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="text-xs font-bold text-blue-600 mb-3 uppercase tracking-wider">Quantum Enhanced</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">量子计算赋能</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        集成商用量子计算设备，让真实量子物态的精准操控，直接融入智能设计系统。
+                    </p>
+                </div>
+            </div>
+
+            <div class="hover-card group bg-white rounded-2xl border border-slate-100 overflow-hidden cursor-default" data-category="software">
+                <div class="h-64 overflow-hidden bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="AI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <div class="text-xs font-bold text-purple-600 mb-3 uppercase tracking-wider">Advanced Materials</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">高性能材料发现</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        利用生成式 AI 和量子计算技术，自动发现改变科技进程的新材料。                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="team" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-16 text-center">核心团队</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="text-center group">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 ring-4 ring-white shadow-lg grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <img src=".\images\H.png" alt="Alex Chen" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Jun. H</h3>
+                    <p class="text-sm text-[#EE4C2C] font-medium mb-3">创始人 & CEO</p>
+                    <p class="text-sm text-slate-500 max-w-xs mx-auto">交叉学科背景，拥有多年量子计算和科学智能产学研经验</p>
+                </div>
+
+                <div class="text-center group">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 ring-4 ring-white shadow-lg grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <img src=".\images\L.png" alt="Sarah Lin" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Qi. L</h3>
+                    <p class="text-sm text-[#EE4C2C] font-medium mb-3">运营总监</p>
+                    <p class="text-sm text-slate-500 max-w-xs mx-auto">伦敦帝国理工IC工程硕士，拥有多年技术领域项目孵化经历</p>
+                </div>
+
+                <div class="text-center group">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 ring-4 ring-white shadow-lg grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <img src=".\images\W.png" alt="David Wu" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Peng. W</h3>
+                    <p class="text-sm text-[#EE4C2C] font-medium mb-3">数据和科学总监</p>
+                    <p class="text-sm text-slate-500 max-w-xs mx-auto">博士，国自然基金资助，科学计算专家</p>
+                </div>
+
+                <div class="text-center group">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 ring-4 ring-white shadow-lg grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <img src=".\images\C.png" alt="Emily Zhang" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Ran. C</h3>
+                    <p class="text-sm text-[#EE4C2C] font-medium mb-3">人才和项目总监</p>
+                    <p class="text-sm text-slate-500 max-w-xs mx-auto">十余年大厂人力和项目经历</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-[#0F172A] text-white py-24">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="w-12 h-12 bg-[#EE4C2C] text-white flex items-center justify-center rounded-lg mx-auto mb-8">
+                <i data-lucide="box" class="w-6 h-6"></i>
+            </div>
+            <h2 class="text-3xl font-bold mb-6">关于 QAIDAO 量子智算项目</h2>
+            <p class="text-slate-400 leading-relaxed mb-12 text-lg font-light">
+                项目名道一量子智能，
+                专注实用性量子人工智能计划的开发和交付。
+                我们的愿景是通过简洁的代码与优雅的设计，
+                解决商用量子计算机实现大规模材料设计的能力。
+            </p>
+            
+            <div class="h-px w-24 bg-slate-700 mx-auto mb-12"></div>
+
+            <div class="flex justify-center gap-8 mb-12">
+                <a href="mailto:contact@nexustech.com" class="flex flex-col items-center gap-2 group cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-[#EE4C2C] transition-colors">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xs text-slate-500 group-hover:text-white transition-colors">Email Us</span>
+                </a>
+                <a href="#home" class="flex flex-col items-center gap-2 group cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-[#EE4C2C] transition-colors">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xs text-slate-500 group-hover:text-white transition-colors">Location</span>
+                </a>
+            </div>
+
+            <p class="text-slate-600 text-xs">
+                &copy; 2026 QAIDAO. Built for the future.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+
+        // 筛选逻辑
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.hover-card');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 样式切换
+                buttons.forEach(b => {
+                    b.className = 'filter-btn px-4 py-1.5 text-sm font-medium rounded-md transition-all text-slate-500 hover:text-slate-900';
+                });
+                btn.className = 'filter-btn active px-4 py-1.5 text-sm font-medium rounded-md transition-all bg-white text-[#EE4C2C] shadow-sm';
+
+                // 筛选内容
+                const filter = btn.getAttribute('data-filter');
+                cards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // 默认激活样式
+        document.querySelector('.filter-btn.active').className = 'filter-btn active px-4 py-1.5 text-sm font-medium rounded-md transition-all bg-white text-[#EE4C2C] shadow-sm';
+    </script>
+</body>
+</html>
