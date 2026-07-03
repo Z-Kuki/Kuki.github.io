@@ -1,2 +1,1 @@
-# Hello
-# This is our company website
+# Hello！ This is our company website
