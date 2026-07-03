@@ -1,6 +1,16 @@
 // script-v2.js
 lucide.createIcons();
 
+// ----- 移动端导航菜单开关 -----
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.querySelector('.nav__links');
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('is-open');
+  });
+}
+
 // ----- 分类筛选功能 -----
 const filterBtns = document.querySelectorAll('.filter-btn');
 const productCards = document.querySelectorAll('.card[data-category]');
@@ -55,8 +65,9 @@ function resize() {
 window.addEventListener('resize', resize);
 resize();
 
-const spacing = 30;
-const wavelength = 48;
+// 略微增大点距(spacing)与波长(wavelength)，能在不影响视觉效果的前提下显著提升高分屏下的渲染性能
+const spacing = 40; 
+const wavelength = 60; 
 const speed = 0.02;
 let t = 0;
 
@@ -77,7 +88,7 @@ function frame() {
       ctx.beginPath();
       ctx.arc(x, y, r, 0, Math.PI * 2);
       
-      // 使用科技浅蓝 (2, 132, 199) 进行渲染，完美融入白色背景
+      // 使用科技浅蓝 (2, 132, 199) 进行渲染
       ctx.fillStyle = `rgba(2, 132, 199, ${alpha})`;
       ctx.fill();
     }

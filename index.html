@@ -3,33 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QAIDAO 洽道量子 - 致力于构建下一代量子计算硬件与人工智能解决方案的混合架构。">
   <title>QAIDAO 洽道 | Quantum Intelligence</title>
   
-  <!-- 外部 CSS -->
   <link rel="stylesheet" href="style.css">
   
-  <!-- 字体 & 图标库 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <style>
-    .hero__inner {
-      grid-template-columns: 1fr 1.3fr !important;  
-    }
-    .hero-media {
-      max-width: 100%;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- 导航栏 -->
   <nav class="nav">
     <div class="nav__inner">
       <a href="#" class="brand" aria-label="QAIDAO 首页">
-        <img src="./images/logo02.png" alt="QAIDAO Logo">
+        <img src="./images/logo.png" alt="QAIDAO Logo">
       </a>
       <div class="nav__links">
         <a href="#solutions">核心产品</a>
@@ -39,7 +28,7 @@
         <a href="#join">加入我们</a>
         <a href="#about">关于我们</a>
       </div>
-      <a href="https://pypi.org/project/openquantum/" target="_blank" class="btn btn--ghost reveal" style="padding: 8px 16px;">
+      <a href="https://pypi.org/project/openquantum/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost reveal" style="padding: 8px 16px;">
         <i data-lucide="github" style="width:16px; height:16px; margin-right:4px;"></i> Open Source
       </a>
       <button class="nav__toggle" id="navToggle" aria-label="打开菜单">
@@ -48,7 +37,6 @@
     </div>
   </nav>
 
-  <!-- Hero 头部 -->
   <header class="hero">
     <div class="hero__canvas-wrap"><canvas id="interference"></canvas></div>
     <div class="hero__grid-bg"></div>
@@ -62,7 +50,7 @@
           <a href="#join" class="btn btn--ghost">加入我们</a>
         </div>
       </div>
-      <a href="http://xhslink.com/o/9bHEto7NDML" target="_blank" class="hero-media reveal stagger-3">
+      <a href="http://xhslink.com/o/9bHEto7NDML" target="_blank" rel="noopener noreferrer" class="hero-media reveal stagger-3">
         <video autoplay loop muted playsinline poster="./images/Start.jpg">
           <source src="./videos/demo002.mp4" type="video/mp4">
         </video>
@@ -70,14 +58,12 @@
       </a>
     </div>
 
-    <!-- 增加底部滚动提示箭头 -->
     <a href="#solutions" class="scroll-indicator reveal stagger-4">
       <span>向下探索</span>
       <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
     </a>
   </header>
 
-  <!-- 统计条 -->
   <div class="stats-banner">
     <div class="container stats__grid">
       <div class="reveal">
@@ -100,7 +86,6 @@
   </div>
 
   <main>
-    <!-- 核心产品 -->
     <section class="products container" id="solutions">
       <div class="products-header-wrap reveal">
         <div class="section-head" style="margin-bottom: 0;">
@@ -152,7 +137,6 @@
       </div>
     </section>
 
-    <!-- 云平台 -->
     <section class="empty-section" id="cloud">
       <div class="container">
         <div class="section-head reveal" style="margin: 0 auto; text-align: center;">
@@ -167,7 +151,6 @@
       </div>
     </section>
 
-    <!-- 核心团队 -->
     <section class="team" id="team">
       <div class="container">
         <div class="section-head reveal" style="margin: 0 auto; text-align: center;">
@@ -224,7 +207,6 @@
       </div>
     </section>
 
-    <!-- 动态与发展历程 (时间轴) -->
     <section class="news-timeline" id="news">
       <div class="container">
         <div class="section-head reveal" style="margin: 0 auto 64px; text-align: center;">
@@ -233,7 +215,6 @@
         </div>
 
         <div class="timeline">
-          <!-- 节点1 -->
           <div class="timeline-item reveal stagger-1">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -245,7 +226,6 @@
             </div>
           </div>
 
-          <!-- 节点2 -->
           <div class="timeline-item reveal stagger-2">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -257,7 +237,6 @@
             </div>
           </div>
 
-          <!-- 节点3 -->
           <div class="timeline-item reveal stagger-3">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -269,7 +248,6 @@
             </div>
           </div>
 
-          <!-- 节点4 -->
           <div class="timeline-item reveal stagger-4">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -284,13 +262,12 @@
       </div>
     </section>
 
-    <!-- 加入我们 -->
     <section class="join" id="join">
       <div class="container join-container">
         <h2 class="reveal" style="font-size: 32px; margin-bottom: 32px;">加入我们</h2>
         
         <div class="join-poster-wrap reveal stagger-1">
-          <img src="NEW.png" alt="招聘海报" class="join-poster-img" onerror="this.src='./images/NEW.png'; this.onerror=null;">
+          <img src="./images/NEW.png" alt="招聘海报" class="join-poster-img" onerror="this.src='./images/logo.png'; this.onerror=null;">
         </div>
 
         <div class="join-links reveal stagger-2">
@@ -300,7 +277,7 @@
             </div>
             <span class="join-label">Email Us</span>
           </a>
-          <a href="https://ditu.amap.com/search?query=上海市青浦区沪青平公路3938弄" target="_blank" class="join-btn">
+          <a href="https://ditu.amap.com/search?query=上海市青浦区沪青平公路3938弄" target="_blank" rel="noopener noreferrer" class="join-btn">
             <div class="join-icon-wrap">
               <i data-lucide="map-pin" style="width: 24px; height: 24px;"></i>
             </div>
@@ -310,7 +287,6 @@
       </div>
     </section>
 
-    <!-- 关于我们 -->
     <section class="about" id="about">
       <div class="container about-content">
         <div class="about-icon reveal">
@@ -331,7 +307,6 @@
     </section>
   </main>
 
-  <!-- 外部 JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>

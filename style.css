@@ -190,10 +190,10 @@ section { scroll-margin-top: 84px; }
 /* HERO 头部 */
 .hero {
   position: relative;
-  min-height: 100vh; /* 使首页占满整个屏幕 */
+  min-height: 100vh;
   display: flex;
-  align-items: center; /* 垂直居中内容 */
-  padding: 80px 0 0; /* 给顶部导航栏留出空间 */
+  align-items: center;
+  padding: 80px 0 0;
   background: radial-gradient(circle at 80% 20%, var(--blue-light) 0%, transparent 50%), var(--white);
   overflow: hidden;
 }
@@ -216,7 +216,7 @@ section { scroll-margin-top: 84px; }
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr; /* 增加左侧文字区域的比重 */
+  grid-template-columns: 1fr 1.3fr; /* 统一在这里调整右侧视频区域大小 */
   gap: 64px;
   align-items: center;
   width: 100%;
@@ -231,11 +231,11 @@ section { scroll-margin-top: 84px; }
   font-weight: 700;
 }
 .hero h1 {
-  font-size: clamp(52px, 7vw, 92px); /* 极大增加字体尺寸，突出公司名 */
+  font-size: clamp(52px, 7vw, 92px);
   line-height: 1.1;
   margin-bottom: 24px;
   color: var(--ink);
-  letter-spacing: 0.05em; /* 增加中文的字间距，更显大气 */
+  letter-spacing: 0.05em;
 }
 .hero h1 .text-gradient {
   background: linear-gradient(90deg, var(--blue-primary), #0284c7, #38bdf8);
@@ -243,7 +243,7 @@ section { scroll-margin-top: 84px; }
   -webkit-text-fill-color: transparent;
   background-size: 200% auto;
   animation: gradientFlow 4s linear infinite;
-  text-shadow: 0 10px 30px rgba(2, 132, 199, 0.25); /* 加入光晕特效，吸引视觉焦点 */
+  text-shadow: 0 10px 30px rgba(2, 132, 199, 0.25);
 }
 .hero__sub {
   font-size: 16.5px;
@@ -265,6 +265,7 @@ section { scroll-margin-top: 84px; }
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   display: block;
   border: 1px solid var(--line);
+  max-width: 100%;
 }
 .hero-media:hover {
   transform: translateY(-6px);
@@ -293,7 +294,6 @@ section { scroll-margin-top: 84px; }
   letter-spacing: 0.05em;
 }
 
-/* 满屏后的向下滚动引导箭头 */
 .scroll-indicator {
   position: absolute;
   bottom: 40px;
@@ -507,7 +507,7 @@ section { scroll-margin-top: 84px; }
   letter-spacing: 0.14em;
 }
 
-/* TEAM 核心团队 (参考设计图：取消边框卡片，极简纯净留白) */
+/* TEAM 核心团队 */
 .team {
   padding: 120px 0;
   background: var(--white);
@@ -568,7 +568,8 @@ section { scroll-margin-top: 84px; }
   max-width: 240px;
   margin: 0 auto;
 }
-/* NEWS / 发展历程 (仿原图垂直时间轴设计) */
+
+/* NEWS / 发展历程 */
 .news-timeline {
   padding: 120px 0;
   background: var(--bg-sub);
@@ -580,7 +581,6 @@ section { scroll-margin-top: 84px; }
   max-width: 900px;
   margin: 0 auto;
 }
-/* 核心中轴线 */
 .timeline::after {
   content: '';
   position: absolute;
@@ -597,11 +597,9 @@ section { scroll-margin-top: 84px; }
   width: 50%;
   margin-bottom: 24px;
 }
-/* 左右交替布局 */
 .timeline-item:nth-child(odd) { left: 0; }
 .timeline-item:nth-child(even) { left: 50%; }
 
-/* 时间轴节点(光点) */
 .timeline-dot {
   position: absolute;
   width: 14px;
@@ -624,7 +622,6 @@ section { scroll-margin-top: 84px; }
   transform: scale(1.3);
 }
 
-/* 时间轴卡片 */
 .timeline-content {
   padding: 32px;
   background: linear-gradient(145deg, var(--white), #f8fbff);
@@ -654,7 +651,6 @@ section { scroll-margin-top: 84px; }
   color: var(--ink);
 }
 
-/* 时间轴图片展示框 */
 .timeline-image-wrap {
   margin-top: 16px;
   border-radius: 8px;
@@ -673,14 +669,13 @@ section { scroll-margin-top: 84px; }
 .timeline-content:hover .timeline-image-wrap img {
   transform: scale(1.05);
 }
-
 .timeline-desc {
   font-size: 13.5px;
   color: var(--text-muted);
   line-height: 1.6;
 }
 
-/* JOIN 加入我们：修复海报显示与布局结构 */
+/* JOIN 加入我们 */
 .join {
   padding: 120px 0;
   background: var(--bg-sub);
@@ -747,7 +742,7 @@ section { scroll-margin-top: 84px; }
 /* ABOUT 关于我们 */
 .about {
   padding: 120px 0;
-  background: #0B1E2B; /* 沉稳的底色收尾 */
+  background: #0B1E2B;
   color: var(--white);
 }
 .about-content {
@@ -794,7 +789,30 @@ section { scroll-margin-top: 84px; }
 
 /* 响应式断点适配 */
 @media (max-width: 920px) {
-  .nav__links, .nav .btn { display: none; }
+  /* 隐藏默认横向导航 */
+  .nav__links { display: none; }
+  
+  /* 添加展开后的菜单样式 */
+  .nav__links.is-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-nav);
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.1);
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .nav__links.is-open a {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .nav .btn { display: none; }
   .nav__toggle { display: block; }
   .hero__inner { grid-template-columns: 1fr; gap: 48px; }
   .stats__grid { grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
@@ -806,7 +824,6 @@ section { scroll-margin-top: 84px; }
   .container { padding: 0 24px; }
   .hero { padding: 130px 0 70px; }
   .hero h1 { font-size: 38px; }
-  /* 移动端时间轴 */
   .timeline::after { left: 24px; }
   .timeline-item { width: 100%; padding-left: 64px; padding-right: 0; }
   .timeline-item:nth-child(even) { left: 0; }
@@ -815,7 +832,6 @@ section { scroll-margin-top: 84px; }
     left: 17px;
     right: auto;
   }
-
   .team__grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
   .join-links { flex-direction: column; gap: 24px; align-items: center; }
 }
