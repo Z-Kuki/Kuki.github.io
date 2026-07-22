@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QAIDAO 洽道量子 - 致力于构建下一代量子计算硬件与人工智能解决方案的混合架构。">
   <title>QAIDAO 洽道 | Quantum Intelligence</title>
+  
   <link rel="stylesheet" href="style-v2.css">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,26 +15,22 @@
 </head>
 <body>
 
-  <!-- 全局分子移动背景 -->
-  <canvas id="moleculeCanvas"></canvas>
-
-  <!-- 通用导航栏 -->
   <nav class="nav">
+    
     <div class="nav__inner">
-      <a href="index-v3.html" class="brand" aria-label="QAIDAO 首页">
-        <img src="./images/logo.png" alt="QAIDAO Logo">
+      <a href="#" class="brand" aria-label="QAIDAO 首页">
+        <img src="./images/logo02.png" alt="QAIDAO Logo">
       </a>
       <div class="nav__links">
-        <a href="index-v3.html">首页</a>
-        <a href="solutions.html">核心产品</a>
-        <a href="cloud.html">云平台</a>
-        <a href="team.html">核心团队</a>
-        <a href="news.html">动态</a>
-        <a href="join.html">加入我们</a>
-        <a href="about.html">关于我们</a>
+        <a href="#solutions">核心产品</a>
+        <a href="#cloud">云平台</a>
+        <a href="#team">核心团队</a>
+        <a href="#news">动态</a>
+        <a href="#join">加入我们</a>
+        <a href="#about">关于我们</a>
       </div>
-      <a href="https://pypi.org/project/openquantum/" target="_blank" class="btn btn--ghost reveal" style="padding: 8px 16px;">
-        <i data-lucide="github" style="width:16px; height:16px; margin-right:4px;"></i> Open Source
+      <a href="https://pypi.org/project/openquantum/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost reveal" style="padding: 8px 16px;">
+        <i data-lucide="github" style="width:16px; height:16px; margin-right:4px;"></i>Open Source
       </a>
       <button class="nav__toggle" id="navToggle" aria-label="打开菜单">
         <span></span><span></span>
@@ -39,7 +38,6 @@
     </div>
   </nav>
 
-  <!-- Hero 头部 -->
   <header class="hero">
     <div class="hero__canvas-wrap"><canvas id="interference"></canvas></div>
     <div class="hero__grid-bg"></div>
@@ -49,24 +47,24 @@
         <h1 class="reveal"><span class="text-gradient">洽道量子</span></h1>
         <p class="hero__sub reveal stagger-1">我们致力于构建下一代量子计算硬件与人工智能解决方案的混合架构。将先进和划时代的材料设计能力转化为简洁、可靠的产品。</p>
         <div class="hero__ctas reveal stagger-2">
-          <a href="solutions.html" class="btn btn--primary">探索方案</a>
-          <a href="join.html" class="btn btn--ghost">加入我们</a>
+          <li><a href="/XCT.html"class="btn btn--primary">验证可行性</a></li>
+          <a href="#join" class="btn btn--ghost">加入我们</a>
         </div>
       </div>
-      <a href="http://xhslink.com/o/9bHEto7NDML" target="_blank" class="hero-media reveal stagger-3">
+      <a href="http://xhslink.com/o/9bHEto7NDML" target="_blank" rel="noopener noreferrer" class="hero-media reveal stagger-3">
         <video autoplay loop muted playsinline poster="./images/Start.jpg">
           <source src="./videos/demo002.mp4" type="video/mp4">
         </video>
         <div class="hero-media-badge">QAIDAO SHOW</div>
       </a>
     </div>
-    <a href="solutions.html" class="scroll-indicator reveal stagger-4">
+
+    <a href="#solutions" class="scroll-indicator reveal stagger-4">
       <span>向下探索</span>
       <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
     </a>
   </header>
 
-  <!-- 统计条 -->
   <div class="stats-banner">
     <div class="container stats__grid">
       <div class="reveal">
@@ -88,29 +86,238 @@
     </div>
   </div>
 
-  <!-- PyCharm 风格页脚 -->
-  <footer class="jb-footer">
-    <div class="container jb-footer__inner">
-      <div class="jb-footer__top">
-        <div class="jb-footer__brand">
-          <img src="./images/logo.png" alt="QAIDAO">
+  <main>
+    <section class="products container" id="solutions">
+      <div class="products-header-wrap reveal">
+        <div class="section-head" style="margin-bottom: 0;">
+          <div class="eyebrow">CORE PRODUCTS</div>
+          <h2>核心产品</h2>
+          <p>从底层硬件控制到上层数据分析，我们提供全栈式的技术服务。</p>
         </div>
-        <div class="jb-footer__links">
-          <a href="#">Privacy & Security</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Trademarks</a>
-          <a href="#">Legal</a>
-        </div>
-      </div>
-      <div class="jb-footer__bottom">
-        <div class="jb-copyright">Copyright &copy; 2026 QAIDAO s.r.o. or its affiliates. All rights reserved.</div>
-        <div class="jb-developed">
-          Developed with drive and QAIDAO Quantum 
-          <i data-lucide="zap" style="width: 14px; height: 14px; color: #38bdf8;"></i>
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">全部</button>
+          <button class="filter-btn" data-filter="hardware">硬件</button>
+          <button class="filter-btn" data-filter="software">软件</button>
         </div>
       </div>
-    </div>
-  </footer>
+      <div class="products__grid">
+        <article class="card reveal stagger-1" data-category="software">
+          <div class="card__img-wrap">
+            <img src="./images/Qwen.png" alt="LLMs Driven">
+          </div>
+          <div class="card__content">
+            <div class="card__label">LLMs Driven</div>
+            <h3 class="card__title">大模型驱动全栈方案</h3>
+            <p class="card__desc">基于开源大模型技术实现全栈方案。</p>
+          </div>
+        </article>
+        <article class="card reveal stagger-2" data-category="hardware">
+          <div class="card__img-wrap">
+            <div class="card__terminal">
+              <span class="cmd-line">> initializing core...</span>
+              <span class="cmd-line">> loading modules [OK]</span>
+              <span class="cmd-line cursor">> starting dashboard...</span>
+            </div>
+          </div>
+          <div class="card__content">
+            <div class="card__label" style="color: var(--blue-primary)">Quantum Enhanced</div>
+            <h3 class="card__title">量子计算赋能</h3>
+            <p class="card__desc">集成商用量子计算设备，让真实量子物态的精准操控，直接融入智能设计系统。</p>
+          </div>
+        </article>
+        <article class="card reveal stagger-3" data-category="software">
+          <div class="card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Advanced Materials">
+          </div>
+          <div class="card__content">
+            <div class="card__label" style="color: #7c3aed;">Advanced Materials</div>
+            <h3 class="card__title">高性能材料发现</h3>
+            <p class="card__desc">利用生成式 AI 和量子计算技术，自动发现改变科技进程的新材料。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="empty-section" id="cloud">
+      <div class="container">
+        <div class="section-head reveal" style="margin: 0 auto; text-align: center;">
+          <h2>云平台</h2>
+        </div>
+        <div class="empty-state-box reveal stagger-1">
+          <div class="icon-glow">
+            <i data-lucide="cloud" style="width: 24px; height: 24px;"></i>
+          </div>
+          <div class="empty-text">静待更新</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team" id="team">
+      <div class="container">
+        <div class="section-head reveal" style="margin: 0 auto; text-align: center;">
+          <div class="eyebrow" style="justify-content: center;">TEAM MEMBERS</div>
+          <h2>核心团队</h2>
+        </div>
+        <div class="team__grid">
+
+          <div class="team-item reveal stagger-1">
+            <div class="team-avatar">
+              <img src="./images/HJJ.jpg" alt="Junjie. Hu">
+            </div>
+            <div class="team-info">
+              <div class="team-name">Junjie. Hu</div>
+              <div class="team-role">创始人</div>
+            </div>
+            <div class="team-desc">交叉学科背景，拥有多年量子计算和科学智能产学研经验</div>
+          </div>
+
+          <div class="team-item reveal stagger-2">
+            <div class="team-avatar">
+              <img src="./images/WP.jpg" alt="Peng. Wu">
+            </div>
+            <div class="team-info">
+              <div class="team-name">Peng. Wu</div>
+              <div class="team-role">联合创始人</div>
+            </div>
+            <div class="team-desc">国家级科研项目资助、10余年计算化学与计算生物学经验</div>
+          </div>
+
+          <div class="team-item reveal stagger-3">
+            <div class="team-avatar">
+              <img src="./images/WQL.jpg" alt="Qianlong. W">
+            </div>
+            <div class="team-info">
+              <div class="team-name">Qianlong. Wang</div>
+              <div class="team-role">联合创始人</div>
+            </div>
+            <div class="team-desc">同时精通顶尖量子物理理论推演与端到端全栈AI架构落地的复合型人才</div>
+          </div>
+
+          <div class="team-item reveal stagger-4">
+            <div class="team-avatar">
+              <img src="./images/WSY.jpg" alt="Shiyu. W">
+            </div>
+            <div class="team-info">
+              <div class="team-name">Shiyu. Wang</div>
+              <div class="team-role">联合创始人</div>
+            </div>
+            <div class="team-desc">拥有物联网、AI、量子、药物设计、开发的复合技术背景</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="news-timeline" id="news">
+      <div class="container">
+        <div class="section-head reveal" style="margin: 0 auto 64px; text-align: center;">
+          <div class="eyebrow" style="justify-content: center;">NEWS & UPDATES</div>
+          <h2>动态</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal stagger-1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2026年5月29日</div>
+              <h3 class="timeline-title">QAIDAO 洽道量子开业，正式启程</h3>
+              <div class="timeline-image-wrap">
+                <img src="./images/Start.jpg" alt="发布新一代混合量子架构" onerror="this.src='./images/logo.png';">
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal stagger-2">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2026年6月24日</div>
+              <h3 class="timeline-title">QAIDAO 团队入选"AI之星"青年科学家创新基金</h3>
+              <div class="timeline-image-wrap">
+                <img src="./images/A.jpg" alt="天使轮融资" onerror="this.src='./images/logo.png';">
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal stagger-3">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2026年6月</div>
+              <h3 class="timeline-title">创始人著作获得清华大学优秀出版图书奖</h3>
+              <div class="timeline-image-wrap">
+                <img src="./images/B.jpg" alt="突破性成果" onerror="this.src='./images/logo.png';">
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal stagger-4">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2026年7月18日 </div>
+              <h3 class="timeline-title">洽道量子在WAIC参加签约仪式</h3>
+              <div class="timeline-image-wrap">
+                <img src="./images/0718.jpg" alt="正式成立" onerror="this.src='./images/logo.png';">
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal stagger-5">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date"> 2026年</div>
+              <h3 class="timeline-title">静待更新</h3>
+              <div class="timeline-image-wrap">
+                <img src="./images/demo.jpg" alt="正式成立" onerror="this.src='./images/logo.png';">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="join" id="join">
+      <div class="container join-container">
+        <h2 class="reveal" style="font-size: 32px; margin-bottom: 32px;">加入我们</h2>
+        
+        <div class="join-poster-wrap reveal stagger-1">
+          <img src="./images/NEW.png" alt="招聘海报" class="join-poster-img" onerror="this.src='./images/logo.png'; this.onerror=null;">
+        </div>
+
+        <div class="join-links reveal stagger-2">
+          <a href="mailto:jhu06262@gmail.com" class="join-btn">
+            <div class="join-icon-wrap">
+              <i data-lucide="mail" style="width: 24px; height: 24px;"></i>
+            </div>
+            <span class="join-label">Email Us</span>
+          </a>
+          <a href="https://ditu.amap.com/search?query=上海市青浦区沪青平公路3938弄" target="_blank" rel="noopener noreferrer" class="join-btn">
+            <div class="join-icon-wrap">
+              <i data-lucide="map-pin" style="width: 24px; height: 24px;"></i>
+            </div>
+            <span class="join-label">上海市青浦区沪青平公路3938弄</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-content">
+        <div class="about-icon reveal">
+          <i data-lucide="box" style="width: 26px; height: 26px;"></i>
+        </div>
+        <h2 class="reveal stagger-1" style="margin-bottom: 24px;">关于 QAIDAO 量子智算项目</h2>
+        <p class="about__quote reveal stagger-2">
+          公司名洽道量子智能<br>
+          专注<span>实用性量子人工智能</span>计划的开发和交付<br>
+          我们的愿景是通过简洁的代码与优雅的设计<br>
+          解决商用量子计算机实现大规模材料设计的能力
+        </p>
+        <div class="about-divider reveal stagger-3"></div>
+        <p class="about-copyright reveal stagger-3">
+          &copy; 2026 QAIDAO. Built for the future.
+        </p>
+      </div>
+    </section>
+  </main>
 
   <script src="script-v2.js"></script>
 </body>
