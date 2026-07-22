@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态 | QAIDAO 洽道</title>
+  <link rel="stylesheet" href="style-v2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  
+  <canvas id="moleculeCanvas"></canvas>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index-v3.html" class="brand" aria-label="QAIDAO 首页">
+        <img src="./images/logo.png" alt="QAIDAO Logo">
+      </a>
+      <div class="nav__links">
+        <a href="index-v3.html">首页</a>
+        <a href="solutions.html">核心产品</a>
+        <a href="cloud.html">云平台</a>
+        <a href="team.html">核心团队</a>
+        <a href="news.html">动态</a>
+        <a href="join.html">加入我们</a>
+        <a href="about.html">关于我们</a>
+      </div>
+      <a href="https://pypi.org/project/openquantum/" target="_blank" class="btn btn--ghost reveal" style="padding: 8px 16px;">
+        <i data-lucide="github" style="width:16px; height:16px; margin-right:4px;"></i> Open Source
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="打开菜单">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main style="padding-top: 100px; min-height: calc(100vh - 100px);">
+    <section class="news-timeline" id="news">
+      <div class="container">
+        <div class="section-head reveal" style="margin: 0 auto 64px; text-align: center;">
+          <div class="eyebrow" style="justify-content: center;">NEWS & UPDATES</div>
+          <h2>动态</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal stagger-5">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date"></div>
+              <h3 class="timeline-title">静待更新</h3>
+              <div class="timeline-image-wrap"><img src="./images/demo.jpg" alt="突破性成果" onerror="this.src='./images/logo.png';"></div>
+            </div>
+          </div>
+                    <div class="timeline-item reveal stagger-4">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2026年7月18日</div>
+              <h3 class="timeline-title">洽道量子在WAIC参加签约仪式</h3>
+              <div class="timeline-image-wrap"><img src="./images/0718.jpg" alt="正式成立" onerror="this.src='./images/logo.png';"></div>
+            </div>
+          </div>
+          
+          <div class="timeline-item reveal stagger-3">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2026年6月</div>
+              <h3 class="timeline-title">创始人著作获得清华大学优秀出版图书奖</h3>
+              <div class="timeline-image-wrap"><img src="./images/B.jpg" alt="突破性成果" onerror="this.src='./images/logo.png';"></div>
+            </div>
+          </div>
+
+<div class="timeline-item reveal stagger-2">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2026年6月24日</div>
+              <h3 class="timeline-title">QAIDAO 团队入选"AI之星"青年科学家创新基金</h3>
+              <div class="timeline-image-wrap"><img src="./images/A.jpg" alt="天使轮融资" onerror="this.src='./images/logo.png';"></div>
+            </div>
+          </div>
+          
+                    <div class="timeline-item reveal stagger-1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2026年5月29日</div>
+              <h3 class="timeline-title">QAIDAO 洽道量子开业，正式启程</h3>
+              <div class="timeline-image-wrap"><img src="./images/Start.jpg" alt="发布新一代混合量子架构" onerror="this.src='./images/logo.png';"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="jb-footer">
+    <div class="container jb-footer__inner">
+      <div class="jb-footer__top">
+        <div class="jb-footer__brand"><img src="./images/logo.png" alt="QAIDAO"></div>
+        <div class="jb-footer__links">
+          <a href="#">Privacy & Security</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Trademarks</a>
+          <a href="#">Legal</a>
+        </div>
+      </div>
+      <div class="jb-footer__bottom">
+        <div class="jb-copyright">Copyright &copy; 2026 QAIDAO s.r.o. or its affiliates. All rights reserved.</div>
+        <div class="jb-developed">
+          Developed with drive and QAIDAO Quantum 
+          <i data-lucide="zap" style="width: 14px; height: 14px; color: #38bdf8;"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script-v2.js"></script>
+</body>
+</html>
