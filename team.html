@@ -4,47 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>核心团队 | QAIDAO 洽道</title>
+  <meta name="description" content="QAIDAO 洽道量子核心团队：量子计算、计算化学、AI 全栈与复合技术背景的联合创始人。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="QAIDAO 洽道">
+  <meta property="og:title" content="核心团队 | QAIDAO 洽道">
+  <meta property="og:description" content="QAIDAO 洽道量子核心团队：量子计算、计算化学、AI 全栈与复合技术背景的联合创始人。">
+  <meta property="og:url" content="https://qaidao.com/team.html">
+  <meta property="og:image" content="https://qaidao.com/images/logo.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" href="./images/logoicon.png">
   <link rel="stylesheet" href="style-v2.css">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@0.460.0"></script>
 </head>
 <body>
   
-  <canvas id="moleculeCanvas"></canvas>
+  <canvas id="moleculeCanvas" aria-hidden="true"></canvas>
 
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="brand" aria-label="QAIDAO 首页">
         <img src="./images/logo02.png" alt="QAIDAO Logo">
       </a>
-      <div class="nav__links">
-        <a href="index-v3.html">首页</a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html">首页</a>
         <a href="solutions.html">核心产品</a>
         <a href="cloud.html">云平台</a>
-        <a href="team.html">核心团队</a>
+        <a href="team.html" aria-current="page">核心团队</a>
         <a href="news.html">动态</a>
         <a href="join.html">加入我们</a>
         <a href="about.html">关于我们</a>
       </div>
-      <a href="https://pypi.org/project/openquantum/" target="_blank" class="btn btn--ghost reveal" style="padding: 8px 16px;">
-        <i data-lucide="github" style="width:16px; height:16px; margin-right:4px;"></i> Open Source
+      <a href="https://pypi.org/project/openquantum/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm reveal">
+        <i data-lucide="github" aria-hidden="true" class="btn__icon"></i> Open Source
       </a>
-      <button class="nav__toggle" id="navToggle" aria-label="打开菜单">
+      <button class="nav__toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <main style="padding-top: 100px; min-height: calc(100vh - 100px);">
+  <main class="main-pad">
+    <section class="page-hero">
+      <div class="container">
+        <div class="eyebrow eyebrow--center page-hero__eyebrow">TEAM MEMBERS</div>
+        <h1>核心团队</h1>
+        <p>量子计算、AI 全栈与交叉学科背景的复合型创始团队。</p>
+      </div>
+    </section>
     <section class="team" id="team">
       <div class="container">
-        <div class="section-head reveal" style="margin: 0 auto; text-align: center;">
-          <div class="eyebrow" style="justify-content: center;">TEAM MEMBERS</div>
-          <h2>核心团队</h2>
-        </div>
         <div class="team__grid">
           <div class="team-item reveal stagger-1">
-            <div class="team-avatar"><img src="./images/HJJ.jpg" alt="Junjie. Hu"></div>
+            <div class="team-avatar"><img src="./images/HJJ.jpg" loading="lazy" alt="Junjie. Hu"></div>
             <div class="team-info">
               <div class="team-name">Junjie. Hu</div>
               <div class="team-role">创始人</div>
@@ -52,7 +64,7 @@
             <div class="team-desc">交叉学科背景，拥有多年量子计算和科学智能产学研经验</div>
           </div>
           <div class="team-item reveal stagger-2">
-            <div class="team-avatar"><img src="./images/WP.jpg" alt="Peng. Wu"></div>
+            <div class="team-avatar"><img src="./images/WP.jpg" loading="lazy" alt="Peng. Wu"></div>
             <div class="team-info">
               <div class="team-name">Peng. Wu</div>
               <div class="team-role">联合创始人</div>
@@ -60,7 +72,7 @@
             <div class="team-desc">国家级科研项目资助、10余年计算化学与计算生物学经验</div>
           </div>
           <div class="team-item reveal stagger-3">
-            <div class="team-avatar"><img src="./images/WQL.jpg" alt="Qianlong. W"></div>
+            <div class="team-avatar"><img src="./images/WQL.jpg" loading="lazy" alt="Qianlong. W"></div>
             <div class="team-info">
               <div class="team-name">Qianlong. Wang</div>
               <div class="team-role">联合创始人</div>
@@ -68,7 +80,7 @@
             <div class="team-desc">同时精通顶尖量子物理理论推演与端到端全栈AI架构落地的复合型人才</div>
           </div>
           <div class="team-item reveal stagger-4">
-            <div class="team-avatar"><img src="./images/WSY.jpg" alt="Shiyu. W"></div>
+            <div class="team-avatar"><img src="./images/WSY.jpg" loading="lazy" alt="Shiyu. W"></div>
             <div class="team-info">
               <div class="team-name">Shiyu. Wang</div>
               <div class="team-role">联合创始人</div>
@@ -82,20 +94,36 @@
 
   <footer class="jb-footer">
     <div class="container jb-footer__inner">
-      <div class="jb-footer__top">
-        <div class="jb-footer__brand"><img src="./images/logo.png" alt="QAIDAO"></div>
-        <div class="jb-footer__links">
-          <a href="#">Privacy & Security</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Trademarks</a>
-          <a href="#">Legal</a>
+      <div class="jb-footer__grid">
+        <div class="jb-footer__brand-block">
+	<img src="./images/logo.png" alt="QAIDAO" class="jb-footer__logo" style="max-width: 150px; height: auto;">
+          <p class="jb-footer__tagline">量子 × AI 混合架构，用简洁的代码与优雅的设计，驱动下一代材料发现。</p>
+        </div>
+        <div class="jb-footer__col">
+          <div class="jb-footer__col-title">探索</div>
+          <a href="index.html">首页</a>
+          <a href="solutions.html">核心产品</a>
+          <a href="news.html">动态</a>
+          <a href="about.html">关于我们</a>
+        </div>
+        <div class="jb-footer__col">
+          <div class="jb-footer__col-title">加入</div>
+          <a href="join.html">加入我们</a>
+          <a href="team.html">核心团队</a>
+          <a href="cloud.html">云平台</a>
+        </div>
+        <div class="jb-footer__col">
+          <div class="jb-footer__col-title">联系</div>
+          <a href="mailto:jhu06262@gmail.com">jhu06262@gmail.com</a>
+          <a href="https://ditu.amap.com/search?query=上海市青浦区沪青平公路3938弄" target="_blank" rel="noopener">上海市青浦区沪青平公路3938弄</a>
+          <a href="https://pypi.org/project/openquantum/" target="_blank" rel="noopener">Open Source 开源项目</a>
         </div>
       </div>
       <div class="jb-footer__bottom">
         <div class="jb-copyright">Copyright &copy; 2026 QAIDAO s.r.o. or its affiliates. All rights reserved.</div>
         <div class="jb-developed">
-          Developed with QAIDAO 
-          <i data-lucide="zap" style="width: 14px; height: 14px; color: #38bdf8;"></i>
+          Developed with QAIDAO
+          <i data-lucide="zap" aria-hidden="true" class="icon-14"></i>
         </div>
       </div>
     </div>

@@ -1,5 +1,38 @@
 // script-v2.js
-lucide.createIcons();
+// 标记 JS 已启用（用于渐进增强：无 JS 时内容始终可见）
+document.documentElement.classList.add('js');
+
+// 图标库加载容错：CDN 失败时不阻塞后续脚本
+if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
+  lucide.createIcons();
+}
+
+// =========================================
+// 0. 移动端菜单开关（全局有效）
+// =========================================
+const navToggle = document.getElementById('navToggle');
+if (navToggle) {
+  const nav = navToggle.closest('.nav');
+  const setMenu = (open) => {
+    if (!nav) return;
+    nav.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+  };
+  navToggle.addEventListener('click', () => {
+    setMenu(!nav.classList.contains('open'));
+  });
+  // 点击菜单项后自动收起
+  if (nav) {
+    nav.querySelectorAll('.nav__links a').forEach(a => {
+      a.addEventListener('click', () => setMenu(false));
+    });
+  }
+  // Esc 键关闭
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
+  });
+}
 
 // =========================================
 // 1. 导航栏滑动阴影效果 (全局有效)
@@ -15,15 +48,20 @@ if (navEl) {
 // 2. 滚动显现系统 (全局有效)
 // =========================================
 const revealElements = document.querySelectorAll('.reveal');
-const revealOnScroll = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target); // 显现后停止监听，提升性能
-    }
-  });
-}, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
-revealElements.forEach(el => revealOnScroll.observe(el));
+if ('IntersectionObserver' in window) {
+  const revealOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); // 显现后停止监听，提升性能
+      }
+    });
+  }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+  revealElements.forEach(el => revealOnScroll.observe(el));
+} else {
+  // 旧浏览器不支持 IntersectionObserver 时直接显示，避免内容不可见
+  revealElements.forEach(el => el.classList.add('active'));
+}
 
 // =========================================
 // 3. 核心产品分类筛选 (仅核心产品页/首页有效)

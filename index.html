@@ -4,16 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QAIDAO 洽道 | Quantum Intelligence</title>
+  <meta name="description" content="洽道量子（QAIDAO）——下一代量子计算硬件与人工智能解决方案的混合架构，将材料设计能力转化为简洁、可靠的产品。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="QAIDAO 洽道">
+  <meta property="og:title" content="QAIDAO 洽道 | Quantum Intelligence">
+  <meta property="og:description" content="洽道量子（QAIDAO）——下一代量子计算硬件与人工智能解决方案的混合架构，将材料设计能力转化为简洁、可靠的产品。">
+  <meta property="og:url" content="https://qaidao.com/">
+  <meta property="og:image" content="https://qaidao.com/images/logo.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" href="./images/logoicon.png">
   <link rel="stylesheet" href="style-v2.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@0.460.0"></script>
 </head>
 <body>
 
   <!-- 全局分子移动背景 -->
-  <canvas id="moleculeCanvas"></canvas>
+  <canvas id="moleculeCanvas" aria-hidden="true"></canvas>
 
   <!-- 通用导航栏 -->
   <nav class="nav">
@@ -21,8 +30,8 @@
       <a href="index.html" class="brand" aria-label="QAIDAO 首页">
         <img src="./images/logo02.png" alt="QAIDAO Logo">
       </a>
-      <div class="nav__links">
-        <a href="index.html">首页</a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" aria-current="page">首页</a>
         <a href="solutions.html">核心产品</a>
         <a href="cloud.html">云平台</a>
         <a href="team.html">核心团队</a>
@@ -30,10 +39,10 @@
         <a href="join.html">加入我们</a>
         <a href="about.html">关于我们</a>
       </div>
-      <a href="https://pypi.org/project/openquantum/" target="_blank" class="btn btn--ghost reveal" style="padding: 8px 16px;">
-        <i data-lucide="github" style="width:16px; height:16px; margin-right:4px;"></i> Open Source
+      <a href="https://pypi.org/project/openquantum/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm reveal">
+        <i data-lucide="github" aria-hidden="true" class="btn__icon"></i> Open Source
       </a>
-      <button class="nav__toggle" id="navToggle" aria-label="打开菜单">
+      <button class="nav__toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
       </button>
     </div>
@@ -41,7 +50,7 @@
 
   <!-- Hero 头部 -->
   <header class="hero">
-    <div class="hero__canvas-wrap"><canvas id="interference"></canvas></div>
+    <div class="hero__canvas-wrap"><canvas id="interference" aria-hidden="true"></canvas></div>
     <div class="hero__grid-bg"></div>
     <div class="container hero__inner">
       <div class="hero-text">
@@ -53,7 +62,7 @@
           <a href="join.html" class="btn btn--ghost">加入我们</a>
         </div>
       </div>
-      <a href="http://xhslink.com/o/9bHEto7NDML" target="_blank" class="hero-media reveal stagger-3">
+      <a href="https://xhslink.com/o/9bHEto7NDML" target="_blank" rel="noopener" class="hero-media reveal stagger-3">
         <video autoplay loop muted playsinline poster="./images/Start.jpg">
           <source src="./videos/demo002.mp4" type="video/mp4">
         </video>
@@ -62,7 +71,7 @@
     </div>
     <a href="solutions.html" class="scroll-indicator reveal stagger-4">
       <span>向下探索</span>
-      <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+      <i data-lucide="chevron-down" aria-hidden="true" class="icon-20"></i>
     </a>
   </header>
 
@@ -91,22 +100,36 @@
   <!-- PyCharm 风格页脚 -->
   <footer class="jb-footer">
     <div class="container jb-footer__inner">
-      <div class="jb-footer__top">
-        <div class="jb-footer__brand">
-          <img src="./images/logo.png" alt="QAIDAO">
+      <div class="jb-footer__grid">
+        <div class="jb-footer__brand-block">
+	<img src="./images/logo.png" alt="QAIDAO" class="jb-footer__logo" style="max-width: 150px; height: auto;">
+          <p class="jb-footer__tagline">量子 × AI 混合架构，用简洁的代码与优雅的设计，驱动下一代材料发现。</p>
         </div>
-        <div class="jb-footer__links">
-          <a href="#">Privacy & Security</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Trademarks</a>
-          <a href="#">Legal</a>
+        <div class="jb-footer__col">
+          <div class="jb-footer__col-title">探索</div>
+          <a href="index.html">首页</a>
+          <a href="solutions.html">核心产品</a>
+          <a href="news.html">动态</a>
+          <a href="about.html">关于我们</a>
+        </div>
+        <div class="jb-footer__col">
+          <div class="jb-footer__col-title">加入</div>
+          <a href="join.html">加入我们</a>
+          <a href="team.html">核心团队</a>
+          <a href="cloud.html">云平台</a>
+        </div>
+        <div class="jb-footer__col">
+          <div class="jb-footer__col-title">联系</div>
+          <a href="mailto:jhu06262@gmail.com">jhu06262@gmail.com</a>
+          <a href="https://ditu.amap.com/search?query=上海市青浦区沪青平公路3938弄" target="_blank" rel="noopener">上海市青浦区沪青平公路3938弄</a>
+          <a href="https://pypi.org/project/openquantum/" target="_blank" rel="noopener">Open Source 开源项目</a>
         </div>
       </div>
       <div class="jb-footer__bottom">
         <div class="jb-copyright">Copyright &copy; 2026 QAIDAO s.r.o. or its affiliates. All rights reserved.</div>
         <div class="jb-developed">
-          Developed with QAIDAO 
-          <i data-lucide="zap" style="width: 14px; height: 14px; color: #38bdf8;"></i>
+          Developed with QAIDAO
+          <i data-lucide="zap" aria-hidden="true" class="icon-14"></i>
         </div>
       </div>
     </div>
