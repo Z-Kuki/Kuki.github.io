@@ -45,19 +45,39 @@
   </nav>
 
   <main class="main-pad">
-    <section class="page-hero">
+    <section class="page-hero page-hero--compact">
       <div class="container">
-        <div class="eyebrow eyebrow--center page-hero__eyebrow">CAREERS</div>
+        <div class="eyebrow eyebrow--plain eyebrow--center page-hero__eyebrow">CAREERS</div>
         <h1>加入我们</h1>
         <p>与我们一起构建下一代量子计算与人工智能混合架构。</p>
       </div>
     </section>
     <section class="join" id="join">
       <div class="container join-container">
-        <div class="join-poster-wrap reveal stagger-1">
-          <img src="./images/NEW.png" alt="招聘海报" class="join-poster-img" loading="lazy">
+        <div class="join-poster-col reveal stagger-1">
+          <div class="join-poster-wrap" id="posterWrap">
+            <img src="./images/NEW.png" alt="招聘海报" class="join-poster-img" id="posterImg">
+            <button type="button" class="join-poster-zoom" id="posterZoom" aria-label="放大查看招聘海报" title="点击放大">
+              <i data-lucide="zoom-in" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="join-poster-caption"><i data-lucide="mouse-pointer-click" aria-hidden="true"></i> 点击海报可查看大图</p>
         </div>
-        <div class="join-links reveal stagger-2">
+
+        <div class="join-jobs reveal stagger-2">
+          <div class="join-jobs__head">
+            <div class="eyebrow eyebrow--plain">OPEN POSITIONS</div>
+            <h2>热招岗位</h2>
+            <p>点击岗位名称，查看详细要求与福利待遇。</p>
+          </div>
+
+          <div class="join-jobs__grid" id="jobGrid" role="tablist" aria-label="热招岗位"></div>
+
+          <div class="job-detail" id="jobDetail" role="tabpanel" aria-live="polite">
+            <div class="job-detail__inner" id="jobPanels"></div>
+          </div>
+
+          <div class="join-links">
           <a href="mailto:jhu06262@gmail.com" class="join-btn">
             <div class="join-icon-wrap"><i data-lucide="mail" aria-hidden="true" class="icon-24"></i></div>
             <span class="join-label">Email Us</span>
@@ -66,10 +86,21 @@
             <div class="join-icon-wrap"><i data-lucide="map-pin" aria-hidden="true" class="icon-24"></i></div>
             <span class="join-label">上海市青浦区沪青平公路3938弄</span>
           </a>
+          </div>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="poster-modal" id="posterModal" role="dialog" aria-modal="true" aria-label="招聘海报大图">
+    <div class="poster-modal__backdrop" data-poster-close></div>
+    <div class="poster-modal__body">
+      <img src="./images/NEW.png" alt="招聘海报大图">
+      <button type="button" class="poster-modal__close" data-poster-close aria-label="关闭大图">
+        <i data-lucide="x" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
 
   <footer class="jb-footer">
     <div class="container jb-footer__inner">
@@ -109,5 +140,337 @@
   </footer>
 
   <script src="script-v2.js"></script>
+  <script>
+  (function () {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ---------- 岗位数据（来源于《岗位需求.xlsx》） ----------
+    var JOBS = [
+      {
+        id: 'fullstack-intern',
+        name: '全栈开发实习生',
+        duties: [
+          '配合技术负责人，将算法与业务能力工程化、产品化落地，把模型/算法能力封装成可用、可靠、可演进的产品功能。',
+          '配合技术负责人，实现端到端项目推进：从需求拆解、技术方案、前后端实现到上线运维。',
+          '配合技术负责人，与算法同学紧密协作，理解算法的边界与特性，在工程侧做好抽象、降级、评测和迭代闭环。',
+          '配合技术负责人，持续打磨系统的工程质量：性能、稳定性、可维护性、可观测性。'
+        ],
+        requirements: [
+          '在校生。',
+          '零基础可投递，公司提供成长机会并具备人才培养能力。',
+          '理工科专业优先。',
+          '逻辑思辨性佳，动手能力和学习能力强。',
+          '具备团队合作精神，能够快速适应团队工作氛围，积极配合团队完成各项任务。'
+        ],
+        bonus: [
+          '熟悉至少一门前、后端语言（Go / Python / Node / Java / C / C++ / Rust / TypeScript）者加分。',
+          '有过 AI Agent、使用 Skills 经验者。'
+        ],
+        growth: [],
+        salary: '实习：6k/月，2k 房补',
+        workTime: '实习：5 天/周，3–6 个月'
+      },
+      {
+        id: 'fullstack',
+        name: '全栈开发工程师',
+        duties: [
+          '配合技术负责人，将算法与业务能力工程化、产品化落地，把模型/算法能力封装成可用、可靠、可演进的产品功能。',
+          '配合技术负责人，实现端到端项目推进：从需求拆解、技术方案、前后端实现到上线运维。',
+          '配合技术负责人，与算法同学紧密协作，理解算法的边界与特性，在工程侧做好抽象、降级、评测和迭代闭环。',
+          '配合技术负责人，持续打磨系统的工程质量：性能、稳定性、可维护性、可观测性。'
+        ],
+        requirements: [
+          '在校、应届、往届毕业生。',
+          '零基础可投递，公司提供成长机会并具备人才培养能力。',
+          '专业包括但不限于：计算机、物理、化学、材料、生物、数学、统计等理工科方向。',
+          '熟悉至少一门前、后端语言（Go / Python / Node / Java / C / C++ / Rust / TypeScript）。',
+          '逻辑思辨性佳，动手能力和学习能力强。',
+          '具备团队合作精神，能够快速适应团队工作氛围，积极配合团队完成各项任务。'
+        ],
+        bonus: [
+          '做过 LLM / Agent / RAG 等相关方向的工程化落地。',
+          '熟练使用 Claude Code、Codex。'
+        ],
+        growth: [],
+        salary: '实习：6k/月，2k 房补',
+        workTime: '实习：5 天/周，3–6 个月'
+      },
+      {
+        id: 'ai4s',
+        name: 'AI4S 算法实习生 / 工程师',
+        duties: [
+          '配合技术负责人，参与 AI for Science / 量子化学相关项目，负责前沿论文调研、计算模型复现与优化、算法迭代与性能提升，面向实际材料体系开展应用研究。',
+          '配合技术负责人，参与材料与分子模拟相关研究，包括但不限于 DFT 计算、分子动力学模拟、聚合物建模、反应机理与材料性质预测等。',
+          '协助跨学科团队开展合作研究。',
+          '持续跟踪 AI 大模型技术及应用发展趋势，快速探索并推动在科学研究与科研场景中的落地应用。'
+        ],
+        requirements: [
+          '在校、应届、往届毕业生。',
+          '零基础可投递，公司提供成长机会并具备人才培养能力。',
+          '专业包括但不限于：计算机、物理、化学、材料、生物、数学、统计、生物信息等理工科方向。',
+          '逻辑思辨性佳，动手能力和学习能力强。'
+        ],
+        bonus: [
+          '有科研项目或竞赛经验优先。',
+          '有科研论文发表者优先。',
+          '熟练使用 Claude Code、Codex。',
+          '熟悉化学 / 生物 / 材料领域公开数据集。'
+        ],
+        growth: [
+          '技术成长：参与 AI4S 大模型 + 量子计算前沿项目，接触 DFT、分子模拟等硬核技术。',
+          '资源支持：高性能计算集群、科研数据资源、与顶尖高校 / 实验室合作机会。',
+          '团队氛围：扁平管理、技术驱动、容错空间大，适合想快速成长的工程师。'
+        ],
+        salary: '实习：6k/月，2k 房补',
+        workTime: '实习：5 天/周，3–6 个月'
+      },
+      {
+        id: 'physics',
+        name: '物理研究实习生 / 研究员',
+        duties: [
+          '帮助量子软硬件协同框架的开发和优化。',
+          '跟进前沿量子算法和量子机器学习进展，使用自研框架进行复现和演示。',
+          '探索可能的新型量子线路结构和量子机器学习模型，构造任务场景和训练数据以实现量子优势。'
+        ],
+        requirements: [
+          '在校、应届、往届毕业生。',
+          '零基础可投递，公司提供成长机会并具备人才培养能力。',
+          '专业包括但不限于：物理学、应用物理学、系统科学与工程、量子信息科学等理工科专业。',
+          '逻辑思辨性佳，动手能力和学习能力强。',
+          '具备团队合作精神，能够快速适应团队工作氛围，积极配合团队完成各项任务。'
+        ],
+        bonus: [
+          '有科研项目或竞赛经验优先。',
+          '有科研论文发表者优先。'
+        ],
+        growth: [
+          '技术成长：参与 AI4S 大模型 + 量子计算前沿项目，接触 DFT、分子模拟等硬核技术。',
+          '资源支持：高性能计算集群、科研数据资源、与顶尖高校 / 实验室合作机会。',
+          '团队氛围：扁平管理、技术驱动、容错空间大，适合想快速成长的工程师。'
+        ],
+        salary: '实习：6k/月，2k 房补；\n正式：10–24k × 13 薪，2k 房补',
+        workTime: '实习：5 天/周，3–6 个月；\n办公时间 9:00–18:00'
+      },
+      {
+        id: 'agent',
+        name: 'AI Agent 开发实习生 / 工程师',
+        duties: [
+          '协助搭建面向新材料研发等场景的 AI 工作流。',
+          '参与多 Agent 协作流程设计，例如信息收集 Agent、任务拆解 Agent、执行 Agent、审核 Agent、总结 Agent 等。',
+          '协助搭建领域知识库。',
+          '负责 Prompt 编写、流程配置、工具调用、效果测试和结果优化。',
+          '负责整理 Agent 使用说明、Workflow 模板、测试记录和落地案例。',
+          '跟踪主流 AI Agent、RAG、Workflow 工具，探索适合产品提效的应用场景。'
+        ],
+        requirements: [
+          '在校、应届、往届毕业生。',
+          '零基础可投递，公司提供成长机会并具备人才培养能力。',
+          '专业包括但不限于：计算机、物理、化学、材料、生物、数学、统计、生物信息等理工科方向。',
+          '逻辑思辨性佳，动手能力和学习能力强。',
+          '具备团队合作精神，能够快速适应团队工作氛围，积极配合团队完成各项任务。'
+        ],
+        bonus: [
+          '有独立完成 AI 产品原型到上线的实践经验。',
+          '具备一定的前后端开发经验，具备系统性的思考视角。',
+          '熟悉 LangChain、LlamaIndex、CrewAI 等至少一种 Agent 开发框架。'
+        ],
+        growth: [
+          '了解并参与 AI Agent 从 0 到 1 的完整过程。',
+          '深度参与 AI 基础设施建设与 AI 应用工程研发，系统性提升 AI 工程能力，提升核心竞争力。'
+        ],
+        salary: '实习：6k/月，2k 房补；\n正式：10–24k × 13 薪，2k 房补',
+        workTime: '实习：5 天/周，3–6 个月；\n办公时间 9:00–18:00'
+      },
+      {
+        id: 'legal',
+        name: '法务专员 / 助理',
+        duties: [
+          '合同审核与管理：负责公司日常业务合同、协议、对外函件（主要是投融资保密协议等）的初审、修订、归档管理，包括购销合同、服务合同、合作协议等，排查基础法律风险，出具初审意见。',
+          '法律合规支持：对接各业务部门，解答日常基础法律咨询，为业务开展提供简易法律参考；协助跟进公司合规流程、制度落地，整理合规资料，配合完成内部合规检查。',
+          '法律文书撰写：独立起草、修改简单法律文书，包括催告函、告知书、情况说明、授权委托书等；协助整理诉讼、仲裁相关全套文书资料。',
+          '知识产权与工商法务辅助：协助跟进公司商标、专利、著作权的维护，配合完成工商、监管部门相关法务对接。',
+          '法律知识：收集更新与公司业务相关的法律法规、行业政策，整理法律风险提示。',
+          '部门交办其他工作：协助上级完成日常法务管理、专项法务工作。'
+        ],
+        requirements: [
+          '学历专业：法学本科及以上学历，通过法律职业资格考试（A 证优先，应届可放宽至备考中），优秀法学应届生可投递。',
+          '经验要求：0–2 年企业法务、律所实习经验，接受优秀法学应届毕业生，零经验可投。',
+          '专业能力：熟悉民法典、合同法、公司法等基础民商事法律知识，了解企业日常法务工作流程；具备基础合同审核、文书撰写、风险识别能力。',
+          '技能要求：熟练使用 Office 办公软件，能够规范整理文书、台账、档案；具备良好的文字功底、逻辑思维能力。',
+          '综合素质：工作细致严谨、责任心强，具备良好的沟通协调能力、执行力和保密意识，能承受基础工作压力，服从部门工作安排。',
+          '其他：品行端正、遵纪守法，无不良从业记录，具备良好的职业素养。'
+        ],
+        bonus: [],
+        growth: [
+          '适合法学应届生、入门法务岗位，工作内容全面，可快速积累企业全流程法务经验。',
+          '团队氛围轻松，职业成长空间充足。'
+        ],
+        salary: '6–8k + 2k 房补（根据学历、证书、经验浮动，应届生可面议）；\n基础福利：五险二金、带薪年假、法定节假日、节日福利、定期团建',
+        workTime: '朝九晚六、双休，法定节假日正常休息'
+      },
+      {
+        id: 'algo',
+        name: '算法研发实习生 / 工程师',
+        duties: [
+          '负责量子算法（如 VQE、QAOA、量子模拟等）的调研、设计与实现。',
+          '集成和优化现有成熟量子计算工具集（如 Qiskit、Cirq、PennyLane、TensorFlow Quantum 等），实现算法模块化、流程自动化。',
+          '跟踪量子计算前沿进展，评估新算法 / 新工具在材料问题中的适用性，支撑技术路线选型。'
+        ],
+        requirements: [
+          '学历背景：凝聚态物理、计算物理、理论物理、量子化学或相关专业硕士及以上学历（211）。',
+          '工具经验：熟悉至少一种量子计算框架（如 Qiskit、Cirq、PennyLane、ProjectQ 等）。',
+          '编程能力：熟练使用 Python / C++，具备良好的代码规范与工程化意识；熟悉 Linux 开发环境。'
+        ],
+        bonus: [
+          '有量子化学计算（如 CASSCF、DMRG、QMC 等）经验者优先。',
+          '有量子算法实际开发或开源项目贡献经历者优先。',
+          '熟悉机器学习（尤其图神经网络、物理信息神经网络）在材料 / 量子领域的应用者优先。'
+        ],
+        growth: [],
+        salary: '面议（以面试沟通为准）',
+        workTime: '以面试沟通为准'
+      },
+      {
+        id: 'materials',
+        name: '材料计算实习生 / 工程师',
+        duties: [
+          '基于第一性原理（DFT）、量子化学，开展材料体系电子结构研究（磁性、拓扑、超导等性质计算，有量子背景为加分项）。'
+        ],
+        requirements: [
+          '学历背景：凝聚态物理、计算材料物理、理论物理、量子化学或相关专业硕士及以上学历（211）。',
+          '固体物理或量子化学基础，熟悉至少一种材料计算或量子化学方法（如 DFT/VASP、Quantum ESPRESSO、Gaussian、PySCF 等）。'
+        ],
+        bonus: [
+          '有量子化学计算（如 CASSCF、DMRG、QMC 等）经验者优先。',
+          '有量子算法实际开发或开源项目贡献经历者优先。',
+          '熟悉机器学习（尤其图神经网络、物理信息神经网络）在材料 / 量子领域的应用者优先。',
+          '有高通量计算或材料数据库（如 Materials Project、AFLOW）使用经验者优先。',
+          '发表过相关领域学术论文者优先。'
+        ],
+        growth: [],
+        salary: '面议（以面试沟通为准）',
+        workTime: '以面试沟通为准'
+      }
+    ];
+
+    // ---------- 渲染岗位卡片与详情面板 ----------
+    var grid = document.getElementById('jobGrid');
+    var panelsWrap = document.getElementById('jobPanels');
+    var cards = [];
+    var panels = [];
+
+    function listHTML(items) {
+      return items.map(function (t) { return '<li>' + t + '</li>'; }).join('');
+    }
+
+    function panelHTML(job) {
+      var blocks =
+        '<section class="job-block"><h4 class="job-block__title">岗位职责</h4><ul class="job-block__list">' + listHTML(job.duties) + '</ul></section>' +
+        '<section class="job-block"><h4 class="job-block__title">任职要求</h4><ul class="job-block__list">' + listHTML(job.requirements) + '</ul></section>' +
+        '<section class="job-block"><h4 class="job-block__title">加分项</h4><ul class="job-block__list">' + (job.bonus.length ? listHTML(job.bonus) : '<li>—</li>') + '</ul></section>' +
+        '<section class="job-block"><h4 class="job-block__title">实习收获</h4>' + (job.growth.length ? '<ul class="job-block__list">' + listHTML(job.growth) + '</ul>' : '<p>—</p>') + '</section>';
+      return (
+        '<div class="job-panel__head">' +
+          '<div class="job-panel__head-main">' +
+            '<span class="job-panel__kicker">职位名称</span>' +
+            '<h3 class="job-panel__title">' + job.name + '</h3>' +
+          '</div>' +
+        '</div>' +
+        '<div class="job-panel__grid">' + blocks + '</div>' +
+        '<div class="job-panel__facts">' +
+          '<div class="job-fact"><span class="job-fact__label">薪资</span><span class="job-fact__value">' + job.salary + '</span></div>' +
+          '<div class="job-fact"><span class="job-fact__label">工作时间</span><span class="job-fact__value">' + job.workTime + '</span></div>' +
+        '</div>'
+      );
+    }
+
+    JOBS.forEach(function (job, i) {
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'job-card' + (i === 0 ? ' active' : '');
+      card.setAttribute('role', 'tab');
+      card.setAttribute('aria-selected', String(i === 0));
+      card.setAttribute('aria-controls', 'jobDetail');
+      card.setAttribute('data-job', job.id);
+      var nameEl = document.createElement('span');
+      nameEl.className = 'job-card__name';
+      nameEl.textContent = job.name;
+      card.appendChild(nameEl);
+      grid.appendChild(card);
+      cards.push(card);
+
+      var panel = document.createElement('article');
+      panel.className = 'job-panel';
+      panel.setAttribute('data-job-panel', job.id);
+      if (i !== 0) panel.hidden = true;
+      panel.innerHTML = panelHTML(job);
+      panelsWrap.appendChild(panel);
+      panels.push(panel);
+    });
+
+    // ---------- 岗位卡片：点击切换详情 ----------
+    var detail = document.getElementById('jobDetail');
+
+    function showPanel(jobId) {
+      panels.forEach(function (panel) {
+        var isTarget = panel.getAttribute('data-job-panel') === jobId;
+        panel.hidden = !isTarget;
+        if (isTarget && !reduceMotion) {
+          panel.classList.remove('job-panel--show');
+          void panel.offsetWidth; // 重新触发入场动画
+          panel.classList.add('job-panel--show');
+        }
+      });
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var jobId = card.getAttribute('data-job');
+        var isOpen = detail.classList.contains('open');
+        var isCurrent = card.classList.contains('active');
+        if (isOpen && isCurrent) {
+          detail.classList.remove('open'); // 再次点击收起详情
+          return;
+        }
+        cards.forEach(function (c) {
+          var on = c === card;
+          c.classList.toggle('active', on);
+          c.setAttribute('aria-selected', String(on));
+        });
+        detail.classList.add('open');
+        showPanel(jobId);
+      });
+    });
+
+    // 页面加载时为默认岗位添加入场动画
+    if (cards.length) {
+      showPanel(cards[0].getAttribute('data-job'));
+    }
+
+    // ---------- 招聘海报：点击放大 ----------
+    var modal = document.getElementById('posterModal');
+    var openModal = function () {
+      if (!modal) return;
+      modal.classList.add('open');
+      document.body.classList.add('modal-open');
+    };
+    var closeModal = function () {
+      if (!modal) return;
+      modal.classList.remove('open');
+      document.body.classList.remove('modal-open');
+    };
+    [document.getElementById('posterImg'), document.getElementById('posterZoom')].forEach(function (el) {
+      if (el) el.addEventListener('click', openModal);
+    });
+    if (modal) {
+      modal.querySelectorAll('[data-poster-close]').forEach(function (el) {
+        el.addEventListener('click', closeModal);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
