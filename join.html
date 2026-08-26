@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>校园招聘 | QAIDAO 洽道</title>
-  <meta name="description" content="QAIDAO 洽道量子 2025–2026 校园招聘：入局量子时代，与未来同行。面向理工科应届毕业生的专属成长计划，7 大岗位虚位以待。">
+  <title>加入我们 | QAIDAO 洽道</title>
+  <meta name="description" content="加入 QAIDAO 洽道量子，与交叉学科团队一起构建下一代量子计算与人工智能混合架构。">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="QAIDAO 洽道">
-  <meta property="og:title" content="校园招聘 | QAIDAO 洽道">
-  <meta property="og:description" content="QAIDAO 洽道量子 2025–2026 校园招聘：入局量子时代，与未来同行。">
+  <meta property="og:title" content="加入我们 | QAIDAO 洽道">
+  <meta property="og:description" content="加入 QAIDAO 洽道量子，与交叉学科团队一起构建下一代量子计算与人工智能混合架构。">
   <meta property="og:url" content="https://qaidao.com/join.html">
   <meta property="og:image" content="https://qaidao.com/images/logo.png">
   <meta name="twitter:card" content="summary">
@@ -16,6 +16,104 @@
   <link rel="stylesheet" href="style-v2.css">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@0.460.0"></script>
+
+  <style>
+    /* ===== join 页面 v2（方案A：侧边部门导航 + 岗位列表）===== */
+    .jr-hero { padding: 20px 0 44px; }
+    .jr-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 56px; align-items: center; }
+    .jr-hero__eyebrow-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .jr-hero__eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: var(--blue-primary); }
+    .jr-hero__badge { font-size: 12px; font-weight: 600; color: var(--blue-dark); background: var(--blue-light); border-radius: 999px; padding: 4px 12px; }
+    .jr-hero h1 { font-size: clamp(34px, 4.2vw, 52px); font-weight: 700; line-height: 1.18; margin: 18px 0 12px; }
+    .jr-hero__sub { font-size: 18px; color: var(--text-muted); font-weight: 500; }
+    .jr-hero__desc { font-size: 14px; color: var(--text-light); line-height: 1.7; max-width: 560px; margin-top: 14px; }
+    .jr-hero__cta { display: flex; align-items: center; gap: 14px; margin-top: 24px; flex-wrap: wrap; }
+    .jr-hero__stats { display: flex; gap: 36px; margin-top: 28px; flex-wrap: wrap; }
+    .jr-stat__num { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--blue-primary); line-height: 1.2; }
+    .jr-stat__label { font-size: 12px; color: var(--text-light); }
+
+    .jr-apply-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 30px 28px; box-shadow: var(--shadow-lg); display: flex; flex-direction: column; gap: 18px; }
+    .jr-apply-card__title { font-size: 16px; font-weight: 700; }
+    .jr-apply-item { display: flex; align-items: flex-start; gap: 12px; }
+    .jr-apply-item__icon { width: 36px; height: 36px; border-radius: 10px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--blue-primary); }
+    .jr-apply-item__icon svg { width: 17px; height: 17px; }
+    .jr-apply-item__label { font-size: 12px; color: #94A3B8; }
+    .jr-apply-item__value { font-size: 14px; font-weight: 600; color: var(--ink); word-break: break-all; }
+    .jr-apply-card__flow { border-top: 1px dashed var(--line); padding-top: 16px; }
+    .jr-apply-card__flow-label { font-size: 12px; color: #94A3B8; margin-bottom: 8px; }
+    .jr-apply-card__flow-text { font-size: 12.5px; color: var(--text-muted); line-height: 1.8; }
+
+    .jr-positions { padding: 8px 0 56px; }
+    .jr-positions__grid { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 32px; align-items: start; }
+    .jr-depts { display: flex; flex-direction: column; gap: 6px; position: sticky; top: 96px; }
+    .jr-depts__label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: #94A3B8; padding: 0 18px 10px; }
+    .jr-dept { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 18px; border-radius: 12px; border: none; background: transparent; font-size: 15px; font-weight: 500; color: var(--text-muted); text-align: left; transition: all 0.25s ease; }
+    .jr-dept:hover { background: rgba(255, 255, 255, 0.85); color: var(--ink); }
+    .jr-dept.active { background: var(--gradient-blue); color: var(--white); font-weight: 600; box-shadow: 0 10px 26px rgba(2, 132, 199, 0.28); }
+    .jr-dept__count { font-size: 12px; font-weight: 600; color: #94A3B8; background: #EEF4F9; border-radius: 999px; padding: 2px 9px; }
+    .jr-dept.active .jr-dept__count { color: var(--white); background: rgba(255, 255, 255, 0.24); }
+
+    .jr-jobs { display: flex; flex-direction: column; gap: 14px; }
+    .jr-jobs__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 0 4px; }
+    .jr-jobs__title-wrap { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .jr-jobs__title { font-size: 24px; font-weight: 700; }
+    .jr-jobs__meta { font-size: 13px; color: var(--text-light); }
+    .jr-filters { display: flex; gap: 8px; }
+    .jr-filter { font-size: 12.5px; font-weight: 500; color: var(--text-light); background: var(--bg-card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 16px; transition: all 0.25s ease; }
+    .jr-filter:hover { color: var(--blue-primary); border-color: rgba(2, 132, 199, 0.4); }
+    .jr-filter.active { color: var(--white); background: var(--blue-primary); border-color: var(--blue-primary); font-weight: 600; }
+    .jr-cols { display: grid; grid-template-columns: 200px 96px minmax(0, 1fr) 88px; gap: 20px; padding: 0 22px; font-size: 12px; font-weight: 600; color: #94A3B8; }
+    .jr-cols span:last-child { text-align: center; }
+    .jr-panel { display: flex; flex-direction: column; gap: 12px; }
+    .jr-panel[hidden], .jr-row[hidden] { display: none; }
+    .jr-row { display: grid; grid-template-columns: 200px 96px minmax(0, 1fr) 88px; gap: 20px; align-items: center; padding: 18px 22px; background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius-md); transition: all 0.25s ease; }
+    .jr-row:hover { border-color: rgba(2, 132, 199, 0.35); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    .jr-row--soon { background: #FAFCFE; }
+    .jr-row__name { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+    .jr-row--soon .jr-row__name { color: var(--text-light); }
+    .jr-row__type { font-size: 12px; font-weight: 600; color: var(--blue-dark); background: var(--blue-light); border-radius: 999px; padding: 4px 10px; text-align: center; white-space: nowrap; justify-self: start; }
+    .jr-row--soon .jr-row__type { color: #94A3B8; background: #F1F5F9; }
+    .jr-row__desc { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+    .jr-row--soon .jr-row__desc { color: #94A3B8; }
+    .jr-row__badge { font-size: 12px; font-weight: 600; border-radius: 999px; padding: 4px 12px; text-align: center; white-space: nowrap; }
+    .jr-row__badge--open { color: #059669; background: #ECFDF5; }
+    .jr-row__badge--soon { color: #94A3B8; background: #F1F5F9; }
+    .jr-empty { padding: 28px 22px; text-align: center; font-size: 13.5px; color: var(--text-light); background: var(--bg-card); border: 1px dashed var(--line); border-radius: var(--radius-md); }
+
+    .jr-gains { padding: 0 0 64px; }
+    .jr-gains__band { background: linear-gradient(135deg, #0369A1 0%, #0284C7 55%, #0EA5E9 100%); border-radius: var(--radius-xl); padding: 48px 52px; position: relative; overflow: hidden; }
+    .jr-gains__band::before { content: ""; position: absolute; top: -80px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); }
+    .jr-gains__band::after { content: ""; position: absolute; bottom: -100px; left: 30%; width: 260px; height: 260px; border-radius: 50%; background: rgba(255, 255, 255, 0.06); }
+    .jr-gains__head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; position: relative; z-index: 1; }
+    .jr-gains__title { font-size: 28px; font-weight: 700; color: var(--white); }
+    .jr-gains__sub { font-size: 13px; color: rgba(255, 255, 255, 0.75); }
+    .jr-gains__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; position: relative; z-index: 1; }
+    .jr-gain { background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 16px; padding: 22px 24px; }
+    .jr-gain__title { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .jr-gain__desc { font-size: 13px; color: rgba(255, 255, 255, 0.82); line-height: 1.65; }
+    .jr-gain--cta { display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.92); }
+    .jr-gain--cta a { font-size: 14px; font-weight: 700; color: var(--blue-primary); }
+
+    @media (max-width: 1080px) {
+      .jr-hero__grid { grid-template-columns: 1fr; gap: 32px; }
+      .jr-positions__grid { grid-template-columns: 1fr; }
+      .jr-depts { position: static; flex-direction: row; flex-wrap: wrap; gap: 8px; }
+      .jr-depts__label { width: 100%; padding: 0 4px 6px; }
+      .jr-dept { padding: 9px 16px; font-size: 13.5px; border: 1px solid var(--line); background: var(--bg-card); border-radius: 999px; }
+      .jr-gains__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .jr-cols { display: none; }
+      .jr-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto auto; gap: 8px 12px; }
+      .jr-row__name { grid-column: 1; grid-row: 1; }
+      .jr-row__badge { grid-column: 2; grid-row: 1; justify-self: end; }
+      .jr-row__type { grid-column: 1 / -1; grid-row: 2; }
+      .jr-row__desc { grid-column: 1 / -1; grid-row: 3; }
+      .jr-gains__band { padding: 32px 24px; }
+      .jr-gains__grid { grid-template-columns: 1fr; }
+      .jr-jobs__head { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
   
@@ -32,7 +130,7 @@
         <a href="cloud.html">云平台</a>
         <a href="team.html">核心团队</a>
         <a href="news.html">动态</a>
-        <a href="join.html" aria-current="page">校园招聘</a>
+        <a href="join.html" aria-current="page">加入我们</a>
         <a href="about.html">关于我们</a>
       </div>
       <a href="https://pypi.org/project/openquantum/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm reveal">
@@ -45,212 +143,481 @@
   </nav>
 
   <main class="main-pad">
-    <section class="page-hero page-hero--compact">
+
+    <!-- ===== Hero：标题 / 介绍 / 投递通道 ===== -->
+    <section class="jr-hero">
+      <div class="container jr-hero__grid">
+        <div class="reveal stagger-1">
+          <div class="jr-hero__eyebrow-row">
+            <span class="jr-hero__eyebrow">CAMPUS RECRUITMENT</span>
+            <span class="jr-hero__badge">2026 校园招聘 · 洽道量子人才计划</span>
+          </div>
+          <h1>入局量子时代，<br>与未来同行</h1>
+          <p class="jr-hero__sub">聚焦下一代量子计算 ｜ 应届生专属成长计划</p>
+          <p class="jr-hero__desc">从零参与硬核科研，用青春定义中国量子新算力。我们接收零岗位经验的优秀同学——潜力大于经验，计算机、人工智能、物理、化学、材料、生物、数学、统计等理工科专业均可大胆投递。</p>
+          <div class="jr-hero__cta">
+            <a href="mailto:duxinyi@mail.qaidao.com" class="btn btn--primary">立即投递简历 <i data-lucide="arrow-right" aria-hidden="true" class="icon-16"></i></a>
+            <a href="#positions" class="btn btn--ghost">浏览全部岗位</a>
+          </div>
+          <div class="jr-hero__stats">
+            <div><div class="jr-stat__num">8</div><div class="jr-stat__label">大事业部</div></div>
+            <div><div class="jr-stat__num">59</div><div class="jr-stat__label">个招聘岗位</div></div>
+            <div><div class="jr-stat__num">1v1</div><div class="jr-stat__label">博士导师带教</div></div>
+            <div><div class="jr-stat__num">期权</div><div class="jr-stat__label">核心岗位激励</div></div>
+          </div>
+        </div>
+        <aside class="jr-apply-card reveal stagger-2">
+          <div class="jr-apply-card__title">投递通道</div>
+          <div class="jr-apply-item">
+            <div class="jr-apply-item__icon"><i data-lucide="mail" aria-hidden="true"></i></div>
+            <div><div class="jr-apply-item__label">投递邮箱</div><a class="jr-apply-item__value" href="mailto:duxinyi@mail.qaidao.com">duxinyi@mail.qaidao.com</a></div>
+          </div>
+          <div class="jr-apply-item">
+            <div class="jr-apply-item__icon"><i data-lucide="phone" aria-hidden="true"></i></div>
+            <div><div class="jr-apply-item__label">联系电话</div><div class="jr-apply-item__value">190 8028 9345</div></div>
+          </div>
+          <div class="jr-apply-item">
+            <div class="jr-apply-item__icon"><i data-lucide="file-text" aria-hidden="true"></i></div>
+            <div><div class="jr-apply-item__label">简历命名格式</div><div class="jr-apply-item__value">学校-专业-学历-姓名</div></div>
+          </div>
+          <div class="jr-apply-card__flow">
+            <div class="jr-apply-card__flow-label">招聘流程</div>
+            <div class="jr-apply-card__flow-text">简历投递 → 技术初面 → 复面（技术+综合）<br>→ 终面（定薪）→ Offer 发放 → 签约入职</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== 岗位区：左侧部门导航 + 右侧岗位列表 ===== -->
+    <section class="jr-positions" id="positions">
       <div class="container">
-        <div class="eyebrow eyebrow--plain eyebrow--center page-hero__eyebrow">CAMPUS RECRUITING</div>
-        <h1>校园招聘</h1>
-        <p>入局量子时代，与未来同行 —— 聚焦下一代量子计算，应届生专属成长计划。</p>
+        <div class="jr-positions__grid">
+          <nav class="jr-depts reveal stagger-1" role="tablist" aria-label="事业部导航">
+            <div class="jr-depts__label">OPEN POSITIONS · 事业部</div>
+            <button type="button" class="jr-dept active" role="tab" aria-selected="true" data-dept="product" data-name="产品部" data-meta="6 个岗位 · 2 个招聘中">产品部 <span class="jr-dept__count">6</span></button>
+            <button type="button" class="jr-dept" role="tab" aria-selected="false" data-dept="data" data-name="数据事业部" data-meta="2 个岗位 · 即将开放">数据事业部 <span class="jr-dept__count">2</span></button>
+            <button type="button" class="jr-dept" role="tab" aria-selected="false" data-dept="agent" data-name="智能体事业部" data-meta="8 个岗位 · 6 个招聘中">智能体事业部 <span class="jr-dept__count">8</span></button>
+            <button type="button" class="jr-dept" role="tab" aria-selected="false" data-dept="materials" data-name="无机材料事业部" data-meta="7 个岗位 · 2 个招聘中">无机材料事业部 <span class="jr-dept__count">7</span></button>
+            <button type="button" class="jr-dept" role="tab" aria-selected="false" data-dept="biochem" data-name="生物化学事业部" data-meta="8 个岗位 · 4 个招聘中">生物化学事业部 <span class="jr-dept__count">8</span></button>
+            <button type="button" class="jr-dept" role="tab" aria-selected="false" data-dept="quantum" data-name="量子事业部" data-meta="9 个岗位 · 6 个招聘中">量子事业部 <span class="jr-dept__count">9</span></button>
+            <button type="button" class="jr-dept" role="tab" aria-selected="false" data-dept="ai" data-name="AI事业部" data-meta="7 个岗位 · 4 个招聘中">AI事业部 <span class="jr-dept__count">7</span></button>
+            <button type="button" class="jr-dept" role="tab" aria-selected="false" data-dept="cross" data-name="跨部门岗位" data-meta="12 个岗位 · 5 个招聘中">跨部门岗位 <span class="jr-dept__count">12</span></button>
+          </nav>
+          <div class="jr-jobs reveal stagger-2">
+            <div class="jr-jobs__head">
+              <div class="jr-jobs__title-wrap">
+                <h2 class="jr-jobs__title" id="jrDeptTitle">产品部</h2>
+                <span class="jr-jobs__meta" id="jrDeptMeta"></span>
+              </div>
+              <div class="jr-filters" role="group" aria-label="岗位状态筛选">
+                <button type="button" class="jr-filter active" data-filter="all">全部</button>
+                <button type="button" class="jr-filter" data-filter="open">招聘中</button>
+                <button type="button" class="jr-filter" data-filter="soon">待开放</button>
+              </div>
+            </div>
+            <div class="jr-cols" aria-hidden="true">
+              <span>岗位名称</span><span>用工形式</span><span>岗位职责</span><span>状态</span>
+            </div>
+            <div class="jr-panel" data-dept-panel="product" role="tabpanel">
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">产品经理</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">协助开展用户调研、需求收集、竞品分析和产品文档编写，跟踪研发、测试、上线及反馈闭环。维护产品需求池、版本计划、使用手册和运营数据。编写产品手册、API 文档、部署指南、培训材料和解决方案文档。建立统一的技术文档规范并维护版本更新。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">售前解决方案工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">深入材料、医药、新能源及科研客户场景，完成技术方案、算例演示和 POC 验证。协助招投标及项目交付，并将客户需求反馈至产品团队。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">项目经理助理</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责科研及研发项目计划推进，跟踪里程碑、交付节点和项目风险。协助国家及地方科技项目的申报、验收和预算管理。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">产品运营</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责产品相关活动的用户运营、内容建设、活动策划及使用数据分析。收集用户反馈，推动产品功能和运营策略持续优化。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">UI／UX 设计师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责量子云平台、AI 产品及科研工具的交互和视觉设计。通过用户研究、原型设计和可用性测试持续改善产品体验。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">高级工业设计师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责量子计算机、测控设备及其他工业产品的外观、材质、色彩和设计语言。完成建模渲染、样机验证及工程对接，推动设计量产。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+            </div>
+            <div class="jr-panel" data-dept-panel="data" hidden role="tabpanel">
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">数据工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">建设材料、分子、生物及量子实验数据的采集、清洗、转换和存储流程。负责数据管道、数据质量和数据服务接口的开发维护。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">数据采集工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">制定科学数据的格式、元数据、版本和质量标准，进行数据采集，建设可追溯的数据资产体系。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+            </div>
+            <div class="jr-panel" data-dept-panel="agent" hidden role="tabpanel">
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">AI Agent 开发工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">面向材料研发、科研和企业业务搭建 AI 工作流、多 Agent 协作流程及领域知识库。负责 Prompt、工具调用、流程配置、效果评测和应用优化。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">Agent 平台工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">建设 Agent 编排、工具接入、权限控制、记忆管理和运行监控平台。提升多 Agent 系统的稳定性、扩展性及开发效率。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">Agent 评测工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">建立 Agent 任务完成率、准确性、安全性、成本和延迟等评测体系。建设自动化评测数据集及回归测试流程。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">全栈开发工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">将模型、Agent 和业务能力封装为可用、可靠的产品功能，端到端完成需求、前后端开发及上线运维。持续提升系统性能、稳定性和可观测性。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">软件测试开发工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">搭建 Agent 和 AI 产品的自动化评测及测试框架，监控核心性能指标。完成接口、前后端及模型链路集成测试，沉淀可复用测试方案。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">AI 解决方案工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">根据客户业务设计 Agent、RAG 和工作流解决方案，完成原型及 POC。协助产品部署、效果验收和后续优化。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">RAG 算法工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责文档解析、向量检索、知识库构建、重排序和答案生成链路。优化专业科研场景中的检索准确率与回答可信度。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">LLM 应用算法工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责大模型微调、Prompt 优化、工具调用和结构化输出等应用算法。针对实际任务开展评测、错误分析和效果迭代。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+            </div>
+            <div class="jr-panel" data-dept-panel="materials" hidden role="tabpanel">
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">材料计算工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">运用第一性原理、DFT 和量子化学方法开展材料电子结构计算。研究材料的磁性、拓扑、超导和力学等性质，并支持材料筛选。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">AI4S 算法工程师（材料方向）</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">面向无机材料问题研发机器学习势函数、性质预测和生成模型。结合仿真与实验数据开展算法验证、优化和材料应用研究。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">材料大模型工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责材料大模型的预训练、微调及领域适配，支持材料生成、性能预测和实验方案推荐。建设专业语料和任务评测体系。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">分子动力学算法工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">使用分子动力学和机器学习势函数研究材料结构、缺陷、界面及反应过程。负责模拟流程建设、结果分析和算法性能优化。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">高通量计算工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">建设 DFT、分子动力学及材料筛选的高通量计算工作流。负责任务调度、数据处理、异常恢复和计算结果入库。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">材料信息学工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">利用机器学习、数据库和统计方法挖掘材料组成、结构与性能关系。建设材料特征、数据集和筛选模型，支持新材料发现。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">材料研发科学家</span>
+                <span class="jr-row__type">全职</span>
+                <span class="jr-row__desc">结合计算、实验和 AI 方法制定材料研发路线，负责重点材料体系的机理分析及候选方案验证。推动算法结果向实验及客户项目转化。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+            </div>
+            <div class="jr-panel" data-dept-panel="biochem" hidden role="tabpanel">
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">AI4S 算法工程师（生物化学方向）</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">面向分子、蛋白质及生物体系开发性质预测、生成和优化算法。结合公开数据、计算模拟和实验数据验证模型效果。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">科学数据工程师（生物化学）</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">建设分子、蛋白质、活性和实验数据的数据管道及质量体系。为模型训练、评测和科研分析提供标准化数据集。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">生物信息算法工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责蛋白质、基因组及多组学数据的处理、建模和分析。开发生物序列、结构及功能预测算法。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">计算化学工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">运用量子化学、分子对接和分子动力学方法研究分子结构、反应和相互作用。构建自动化计算流程并分析模拟结果。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">生物分子大模型工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责蛋白质、核酸和小分子大模型的训练、微调及应用开发。支持结构预测、分子生成、功能预测和候选物筛选。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">分子生成算法工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">研发基于 Diffusion、Transformer 等模型的分子和蛋白质生成算法。围绕有效性、可合成性和目标性质开展多目标优化。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">药物发现算法工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">面向靶点识别、虚拟筛选、活性预测和先导化合物优化开发算法。结合计算和实验反馈建立闭环迭代流程。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">实验协同科学家</span>
+                <span class="jr-row__type">全职</span>
+                <span class="jr-row__desc">负责连接计算模型与实验验证，设计实验方案并分析实验数据。根据验证结果推动算法、数据和研发方向迭代。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+            </div>
+            <div class="jr-panel" data-dept-panel="quantum" hidden role="tabpanel">
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">物理研究实习生／研究员</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">参与量子软硬件协同框架开发，跟踪量子算法和量子机器学习进展。探索新型量子线路、训练数据及潜在量子优势。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">量子算法工程师／研究员</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责 VQE、QAOA、量子模拟等算法的研究、设计和实现。建设可扩展量子算法库，优化模拟器与真机上的运行性能。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">量子算法工程师（量子化学方向）</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">研究和复现量子化学算法，面向化学、材料及分子模拟场景开发应用。评估不同量子算法和工具在实际问题中的适用性。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">量子算子开发工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">面向异构硬件开发量子模拟底层核心算子，适配 GPU、CPU 和其他加速平台。建设高性能量子加速库及可扩展 SDK。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">量子机器学习算法工程师／专家</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">研究、复现和优化量子机器学习算法及训练模型。推动算法在模拟器、量子真机和实际业务场景中的验证与应用。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">量子编译工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">研发适配多芯片和不同硬件架构的量子电路映射及编译算法。优化 NISQ 电路并建设统一编译框架和量子 SDK。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">量子软件测试开发工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">建设量子软件、算法库、SDK 和云平台的自动化测试体系。开展功能、性能和兼容性测试，推动缺陷闭环。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">技术支持工程师（量子计算一体机）</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">为量子计算产品的推广、销售、交付和售后提供技术支持。负责产品资料、客户培训、设备调试及问题协调解决。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">量子计算科学家／专家</span>
+                <span class="jr-row__type">全职</span>
+                <span class="jr-row__desc">规划量子计算软硬件技术路线，推动芯片、测控、算法和系统架构的协同研发。跟踪前沿成果并参与关键技术、论文及专利输出。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+            </div>
+            <div class="jr-panel" data-dept-panel="ai" hidden role="tabpanel">
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">AI4S 大模型工程师／研究员</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责科学大模型从预训练到后训练的全流程研发。使用 LLM、Diffusion 等技术开展材料、分子和蛋白质的生成、预测及模拟。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">AI4S 算法工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">面向真实科学问题研发机器学习势函数、性质预测和生成模型。结合模拟计算及实验数据完成算法验证和性能优化。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">AI 评测工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">建立大模型及科学模型的准确性、鲁棒性、安全性和成本评测体系。建设基准数据集及自动化回归评测流程。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">AI 全栈开发工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">将模型和算法能力封装成可用、可靠的产品功能，完成前后端开发及上线运维。与算法团队协作建设评测、降级和迭代闭环。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">大模型算法工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责基础模型训练、领域微调、推理优化和模型评测。提升模型在科研及专业业务场景中的准确性和可靠性。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">多模态算法工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">研发文本、图像、谱图、分子结构及实验数据的多模态建模方法。支持跨模态检索、理解、生成和预测任务。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">高性能计算工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">优化 GPU、AI 芯片上的模型算子和科学计算程序。设计大规模并行算法并建设稳定、高效的算力基础设施。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+            </div>
+            <div class="jr-panel" data-dept-panel="cross" hidden role="tabpanel">
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">全栈开发工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责各类算法和业务能力的工程化、产品化，完成前后端开发、部署及运维。保障系统性能、稳定性和可维护性。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">后端开发工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责业务系统、科研平台和云服务的接口、数据及服务端开发。参与系统测试、部署和运行维护。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">软件测试开发工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">建设自动化测试和评测体系，覆盖接口、前后端、算法及模型链路。跟踪质量指标并推动问题闭环。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">财务专员</span>
+                <span class="jr-row__type">全职</span>
+                <span class="jr-row__desc">负责账务核算、资产盘点、税务票据和财务报表。协助预算、审计及项目经费管理。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row" data-status="open">
+                <span class="jr-row__name">法务专员／助理</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责合同审核、合规支持、法律文书及知识产权辅助工作。为业务部门提供基础法律风险意见。</span>
+                <span class="jr-row__badge jr-row__badge--open">招聘中</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">DevOps／平台运维工程师</span>
+                <span class="jr-row__type">全职</span>
+                <span class="jr-row__desc">建设 CI/CD、容器、云资源及监控告警体系。保障各业务平台稳定、安全和高效交付。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">售前解决方案工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">调研客户需求，制定解决方案并完成演示、POC 和投标支持。推动需求向产品能力转化。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">售后／技术支持工程师</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责产品交付、客户培训、调试维护及售后问题处理。整理常见问题并推动产品质量改进。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">大客户代表／销售经理</span>
+                <span class="jr-row__type">全职</span>
+                <span class="jr-row__desc">负责教育、科研、医药、材料和工业市场的客户开拓及销售。完成销售目标并维护长期客户关系。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">采购助理</span>
+                <span class="jr-row__type">全职</span>
+                <span class="jr-row__desc">负责采购订单、供应商对账、发票和 ERP 数据管理。跟踪物料交付并处理采购异常。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">人力资源专员／招聘专员</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责招聘、入职、员工关系和人才数据管理。支持各事业部建立专业人才招聘及培养体系。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+              <div class="jr-row jr-row--soon" data-status="soon">
+                <span class="jr-row__name">行政助理</span>
+                <span class="jr-row__type">全职／实习</span>
+                <span class="jr-row__desc">负责办公行政、会议活动、固定资产和日常事务协调。为各事业部提供运营保障。</span>
+                <span class="jr-row__badge jr-row__badge--soon">待开放</span>
+              </div>
+            </div>
+            <p class="jr-empty" id="jrEmpty" hidden>该筛选下暂无岗位——潜力大于经验，欢迎直接自荐至 <a href="mailto:duxinyi@mail.qaidao.com">duxinyi@mail.qaidao.com</a></p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 校招理念 + 招聘海报 -->
-    <section class="join" id="join">
-      <div class="container join-container">
-        <div class="join-poster-col reveal stagger-1">
-          <div class="join-poster-wrap" id="posterWrap">
-            <img src="./images/NEW.png" alt="招聘海报" class="join-poster-img" id="posterImg">
-            <button type="button" class="join-poster-zoom" id="posterZoom" aria-label="放大查看招聘海报" title="点击放大">
-              <i data-lucide="zoom-in" aria-hidden="true"></i>
-            </button>
-          </div>
-          <p class="join-poster-caption"><i data-lucide="mouse-pointer-click" aria-hidden="true"></i> 点击海报可查看大图</p>
-        </div>
-
-        <div class="campus-intro reveal stagger-2">
-          <div class="eyebrow eyebrow--plain">CAMPUS TALENT PLAN</div>
-          <h2>潜力，比经验更重要</h2>
-          <p>接收零岗位经验的优秀同学，潜力大于经验。只要你为计算机、人工智能、物理、化学、材料、生物、数学、统计等理工科相关专业，熟练使用 AI 工具，对技术具备一定敏感度，拥有较强的学习能力，即可大胆投递。</p>
-          <p>公司沉淀了从零培育优秀人才的成熟经验与配套资源。我们将为新人搭建系统的成长路径，赋能你快速夯实能力、实现职业进阶。</p>
-          <p>我们相信：量子产业的未来，属于敢闯、敢学、敢创新的年轻人才。</p>
-          <div class="join-links campus-intro__links">
-            <a href="mailto:duxinyi@mail.qaidao.com" class="join-btn">
-              <div class="join-icon-wrap"><i data-lucide="mail" aria-hidden="true" class="icon-24"></i></div>
-              <span class="join-label">投递简历</span>
-            </a>
-            <a href="tel:19080289345" class="join-btn">
-              <div class="join-icon-wrap"><i data-lucide="phone" aria-hidden="true" class="icon-24"></i></div>
-              <span class="join-label">19080289345</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 校招面向对象 -->
-    <section class="campus-section">
+    <!-- ===== 你将得到 ===== -->
+    <section class="jr-gains">
       <div class="container">
-        <div class="section-head section-head--center reveal">
-          <div class="eyebrow eyebrow--plain eyebrow--center">WHO CAN APPLY</div>
-          <h2>校招面向对象</h2>
-        </div>
-        <ul class="campus-audience reveal stagger-1">
-          <li>2025–2026 届本科、硕士、博士应届毕业生</li>
-          <li>专业包括但不限于：计算机、人工智能、物理、化学、材料、生物、数学、统计等理工科方向</li>
-          <li>热爱前沿科技，愿意长期深耕量子赛道，有科研思维、动手能力、自驱力</li>
-          <li>有无项目经验均可，优秀应届生、科研竞赛经历、实验室经历优先</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 招聘岗位 -->
-    <section class="campus-section" id="jobs">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <div class="eyebrow eyebrow--plain eyebrow--center">OPEN POSITIONS</div>
-          <h2>招聘岗位</h2>
-          <p>点击岗位名称，查看岗位职责、任职要求与学习收获。</p>
-        </div>
-        <div class="join-jobs__grid" id="jobGrid" role="tablist" aria-label="校招岗位"></div>
-        <div class="job-detail" id="jobDetail" role="tabpanel" aria-live="polite">
-          <div class="job-detail__inner" id="jobPanels"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 应届生专属培养体系 -->
-    <section class="campus-section">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <div class="eyebrow eyebrow--plain eyebrow--center">GROWTH SYSTEM</div>
-          <h2>应届生专属培养体系</h2>
-        </div>
-        <div class="campus-grid reveal stagger-1">
-          <div class="campus-card">
-            <h3 class="campus-card__title">一对一导师带教</h3>
-            <p>每位校招同学配备技术负责人 / 博士导师一对一指导，拒绝打杂、拒绝边缘化，全程参与核心项目。</p>
+        <div class="jr-gains__band reveal">
+          <div class="jr-gains__head">
+            <h2 class="jr-gains__title">你将得到</h2>
+            <span class="jr-gains__sub">拒绝打杂、拒绝边缘化，全程参与核心项目</span>
           </div>
-          <div class="campus-card">
-            <h3 class="campus-card__title">全链路项目实战</h3>
-            <p>从实验、仿真、开发、落地到项目申报，完整参与量子产业真实业务，快速积累硬核行业经验。</p>
-          </div>
-          <div class="campus-card">
-            <h3 class="campus-card__title">双通道晋升机制</h3>
-            <p>技术通道：初级工程师 → 中级工程师 → 高级工程师 → 技术专家 / 研究员；管理通道：骨干 → 项目负责人 → 部门负责人。</p>
-          </div>
-          <div class="campus-card">
-            <h3 class="campus-card__title">应届生快速成长机制</h3>
-            <p>季度复盘、技能培训、前沿技术分享、内部分享会、科研成果孵化。</p>
+          <div class="jr-gains__grid">
+            <div class="jr-gain"><div class="jr-gain__title">一对一导师带教</div><div class="jr-gain__desc">技术负责人／博士导师一对一指导，全程参与核心项目。</div></div>
+            <div class="jr-gain"><div class="jr-gain__title">全链路项目实战</div><div class="jr-gain__desc">从实验、仿真、开发、落地到项目申报，完整参与量子产业真实业务。</div></div>
+            <div class="jr-gain"><div class="jr-gain__title">双通道晋升机制</div><div class="jr-gain__desc">技术通道直至技术专家／研究员，管理通道直至部门负责人。</div></div>
+            <div class="jr-gain"><div class="jr-gain__title">快速成长机制</div><div class="jr-gain__desc">季度复盘、技能培训、前沿技术分享、科研成果孵化。</div></div>
+            <div class="jr-gain"><div class="jr-gain__title">全员福利</div><div class="jr-gain__desc">具竞争力薪资、五险一金、带薪年假、科研绩效、项目奖金、年终分红。</div></div>
+            <div class="jr-gain"><div class="jr-gain__title">初创核心福利</div><div class="jr-gain__desc">优秀应届生可授予公司期权，另有人才租房补贴。</div></div>
+            <div class="jr-gain"><div class="jr-gain__title">工作氛围</div><div class="jr-gain__desc">博士团队带队、扁平化管理、纯技术科研氛围、弹性作息。</div></div>
+            <div class="jr-gain jr-gain--cta"><a href="mailto:duxinyi@mail.qaidao.com">以青春之力，筑量子未来 →</a></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- 校招专属福利 -->
-    <section class="campus-section">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <div class="eyebrow eyebrow--plain eyebrow--center">BENEFITS</div>
-          <h2>校招专属福利</h2>
-        </div>
-        <div class="campus-grid campus-grid--3 reveal stagger-1">
-          <div class="campus-card">
-            <h3 class="campus-card__title">全员福利</h3>
-            <p>极具竞争力的薪资、五险一金、带薪年假、定期团建、科研绩效、项目奖金、年终分红。</p>
-          </div>
-          <div class="campus-card">
-            <h3 class="campus-card__title">初创核心福利</h3>
-            <p>优秀应届生可授予公司期权，跟随公司长期成长，并享有人才租房补贴。</p>
-          </div>
-          <div class="campus-card">
-            <h3 class="campus-card__title">工作氛围</h3>
-            <p>博士团队带队、扁平化管理、无内卷内耗、纯技术科研氛围、弹性作息。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 投递方式 -->
-    <section class="campus-section">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <div class="eyebrow eyebrow--plain eyebrow--center">HOW TO APPLY</div>
-          <h2>投递方式</h2>
-          <p>简历命名格式：学校 - 专业 - 学历 - 姓名</p>
-        </div>
-        <div class="campus-apply reveal stagger-1">
-          <div class="campus-apply__row">
-            <span class="campus-apply__label">投递邮箱</span>
-            <a class="campus-apply__value" href="mailto:duxinyi@mail.qaidao.com">duxinyi@mail.qaidao.com</a>
-          </div>
-          <div class="campus-apply__row">
-            <span class="campus-apply__label">联系电话</span>
-            <a class="campus-apply__value" href="tel:19080289345">19080289345</a>
-          </div>
-        </div>
-        <div class="campus-process reveal stagger-2">
-          <span class="campus-process__step">简历投递</span>
-          <span class="campus-process__arrow" aria-hidden="true">→</span>
-          <span class="campus-process__step">技术初面</span>
-          <span class="campus-process__arrow" aria-hidden="true">→</span>
-          <span class="campus-process__step">复面（技术+综合）</span>
-          <span class="campus-process__arrow" aria-hidden="true">→</span>
-          <span class="campus-process__step">终面（定薪）</span>
-          <span class="campus-process__arrow" aria-hidden="true">→</span>
-          <span class="campus-process__step">Offer 发放</span>
-          <span class="campus-process__arrow" aria-hidden="true">→</span>
-          <span class="campus-process__step">签约入职</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="campus-section">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <div class="eyebrow eyebrow--plain eyebrow--center">FAQ</div>
-          <h2>常见问题</h2>
-        </div>
-        <div class="campus-faq reveal stagger-1">
-          <div class="campus-faq__item">
-            <div class="campus-faq__q">非量子专业可以投递吗？</div>
-            <div class="campus-faq__a">可以。公司提供完整岗前培养，计算机、人工智能、物理、化学、材料、生物、数学、统计等理工科均可投递。</div>
-          </div>
-          <div class="campus-faq__item">
-            <div class="campus-faq__q">是否接受实习、毕业设计在岗？</div>
-            <div class="campus-faq__a">支持长期实习 / 远程实习、毕业设计联合指导，优秀实习生可直接转正。</div>
-          </div>
-          <div class="campus-faq__item">
-            <div class="campus-faq__q">应届生是否有期权机会？</div>
-            <div class="campus-faq__a">核心技术岗优秀应届生可参与公司期权激励计划。</div>
-          </div>
-          <div class="campus-faq__item">
-            <div class="campus-faq__q">是否解决落户、人才补贴？</div>
-            <div class="campus-faq__a">公司配合应届生落户申报、各类科创人才补贴申请。</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 结束语 -->
-    <section class="campus-closing">
-      <div class="container reveal">
-        <h2>以青春之力，筑量子未来</h2>
-        <p>我们期待每一位热爱前沿科技的年轻人，与我们一起深耕量子计算，让复杂问题可解，让科学计算更高效，共同推动量子计算从科研探索走向产业应用。</p>
       </div>
     </section>
   </main>
 
-  <div class="poster-modal" id="posterModal" role="dialog" aria-modal="true" aria-label="招聘海报大图">
-    <div class="poster-modal__backdrop" data-poster-close></div>
-    <div class="poster-modal__body">
-      <img src="./images/NEW.png" alt="招聘海报大图">
-      <button type="button" class="poster-modal__close" data-poster-close aria-label="关闭大图">
-        <i data-lucide="x" aria-hidden="true"></i>
-      </button>
-    </div>
-  </div>
-
-  <footer class="jb-footer">
+<footer class="jb-footer">
     <div class="container jb-footer__inner">
       <div class="jb-footer__grid">
         <div class="jb-footer__brand-block">
@@ -266,13 +633,13 @@
         </div>
         <div class="jb-footer__col">
           <div class="jb-footer__col-title">加入</div>
-          <a href="join.html">校园招聘</a>
+          <a href="join.html">加入我们</a>
           <a href="team.html">核心团队</a>
           <a href="cloud.html">云平台</a>
         </div>
         <div class="jb-footer__col">
           <div class="jb-footer__col-title">联系</div>
-          <a href="mailto:duxinyi@mail.qaidao.com">duxinyi@mail.qaidao.com</a>
+          <a href="mailto:jhu06262@gmail.com">jhu06262@gmail.com</a>
           <a href="https://ditu.amap.com/search?query=上海市青浦区沪青平公路3938弄" target="_blank" rel="noopener">上海市青浦区沪青平公路3938弄</a>
           <a href="https://pypi.org/project/openquantum/" target="_blank" rel="noopener">Open Source 开源项目</a>
         </div>
@@ -290,253 +657,55 @@
   <script src="script-v2.js"></script>
   <script>
   (function () {
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // ---------- 部门切换 + 状态筛选 ----------
+    var deptBtns = Array.prototype.slice.call(document.querySelectorAll('.jr-dept'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.jr-panel'));
+    var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.jr-filter'));
+    var title = document.getElementById('jrDeptTitle');
+    var meta = document.getElementById('jrDeptMeta');
+    var empty = document.getElementById('jrEmpty');
+    var currentDept = deptBtns.length ? deptBtns[0].getAttribute('data-dept') : null;
+    var currentFilter = 'all';
 
-    // ---------- 岗位数据（来源于《校招岗位需求.xlsx》） ----------
-    var JOBS = [
-      {
-        id: 'fullstack-intern',
-        name: '全栈开发实习生',
-        duties: [
-          '配合技术负责人，将算法、业务能力的工程化&产品化落地，把模型/算法能力封装成可用、可靠、可演进的产品功能。',
-          '配合技术负责人，实现端到端推进项目：从需求拆解、技术方案、前后端实现到上线运维。',
-          '配合技术负责人，与算法同学紧密协作，理解算法的边界与特性，在工程侧做好抽象、降级、评测和迭代闭环。',
-          '配合技术负责人，持续打磨系统的工程质量：性能、稳定性、可维护性、可观测性。'
-        ],
-        requirements: [
-          '在校生。',
-          '零基础可投递，公司提供成长机会并具备人才培养能力。',
-          '理工科专业优先。',
-          '逻辑思辨性佳，动手能力和学习能力强。',
-          '具备团队合作精神，能够快速适应团队工作氛围，积极配合团队完成各项任务。'
-        ],
-        growth: []
-      },
-      {
-        id: 'fullstack',
-        name: '全栈开发工程师',
-        duties: [
-          '配合技术负责人，将算法、业务能力的工程化&产品化落地，把模型/算法能力封装成可用、可靠、可演进的产品功能。',
-          '配合技术负责人，实现端到端推进项目：从需求拆解、技术方案、前后端实现到上线运维。',
-          '配合技术负责人，与算法同学紧密协作，理解算法的边界与特性，在工程侧做好抽象、降级、评测和迭代闭环。',
-          '配合技术负责人，持续打磨系统的工程质量：性能、稳定性、可维护性、可观测性。'
-        ],
-        requirements: [
-          '在校、应届、往届毕业生。',
-          '零基础可投递，公司提供成长机会并具备人才培养能力。',
-          '专业包括但不限于：计算机、物理、化学、材料、生物、数学、统计等理工科方向。',
-          '熟悉至少一门前、后端语言（Go / Python / Node / Java / C / C++ / Rust / TypeScript）。',
-          '逻辑思辨性佳，动手能力和学习能力强。',
-          '具备团队合作精神，能够快速适应团队工作氛围，积极配合团队完成各项任务。'
-        ],
-        growth: []
-      },
-      {
-        id: 'ai4s',
-        name: 'AI4S 算法实习生 / 工程师',
-        duties: [
-          '配合技术负责人，参与 AI for Science / 量子化学相关项目，负责前沿论文调研、计算模型复现与优化、算法迭代与性能提升，面向实际材料体系开展应用研究。',
-          '配合技术负责人，参与材料与分子模拟相关研究，包括但不限于 DFT 计算、分子动力学模拟、聚合物建模、反应机理与材料性质预测等。',
-          '协助跨学科团队开展合作研究。',
-          '持续跟踪 AI 大模型技术及应用发展趋势，快速探索并推动在科学研究与科研场景中的落地应用。'
-        ],
-        requirements: [
-          '在校、应届、往届毕业生。',
-          '零基础可投递，公司提供成长机会并具备人才培养能力。',
-          '专业包括但不限于：计算机、物理、化学、材料、生物、数学、统计、生物信息等理工科方向。',
-          '逻辑思辨性佳，动手能力和学习能力强。'
-        ],
-        growth: [
-          '技术成长：参与 AI4S 大模型 + 量子计算前沿项目，接触 DFT、分子模拟等硬核技术。',
-          '资源支持：高性能计算集群、科研数据资源、与顶尖高校 / 实验室合作机会。',
-          '团队氛围：扁平管理、技术驱动、容错空间大，适合想快速成长的工程师。'
-        ]
-      },
-      {
-        id: 'physics',
-        name: '物理研究实习生 / 研究员',
-        duties: [
-          '帮助量子软硬件协同框架的开发和优化。',
-          '跟进前沿量子算法和量子机器学习进展，使用自研框架进行复现和演示。',
-          '探索可能的新型量子线路结构和量子机器学习模型，构造任务场景和训练数据以实现量子优势。'
-        ],
-        requirements: [
-          '在校、应届、往届毕业生。',
-          '零基础可投递，公司提供成长机会并具备人才培养能力。',
-          '专业包括但不限于：物理学、应用物理学、系统科学与工程、量子信息科学等理工科专业。',
-          '逻辑思辨性佳，动手能力和学习能力强。',
-          '具备团队合作精神，能够快速适应团队工作氛围，积极配合团队完成各项任务。'
-        ],
-        growth: [
-          '技术成长：参与 AI4S 大模型 + 量子计算前沿项目，接触 DFT、分子模拟等硬核技术。',
-          '资源支持：高性能计算集群、科研数据资源、与顶尖高校 / 实验室合作机会。',
-          '团队氛围：扁平管理、技术驱动、容错空间大，适合想快速成长的工程师。'
-        ]
-      },
-      {
-        id: 'agent',
-        name: 'AI Agent 开发实习生 / 工程师',
-        duties: [
-          '协助搭建面向新材料研发等场景的 AI 工作流。',
-          '参与多 Agent 协作流程设计，例如信息收集 Agent、任务拆解 Agent、执行 Agent、审核 Agent、总结 Agent 等。',
-          '协助搭建领域知识库。',
-          '负责 Prompt 编写、流程配置、工具调用、效果测试和结果优化。',
-          '负责整理 Agent 使用说明、Workflow 模板、测试记录和落地案例。',
-          '跟踪主流 AI Agent、RAG、Workflow 工具，探索适合产品提效的应用场景。'
-        ],
-        requirements: [
-          '在校、应届、往届毕业生。',
-          '零基础可投递，公司提供成长机会并具备人才培养能力。',
-          '专业包括但不限于：计算机、物理、化学、材料、生物、数学、统计、生物信息等理工科方向。',
-          '逻辑思辨性佳，动手能力和学习能力强。',
-          '具备团队合作精神，能够快速适应团队工作氛围，积极配合团队完成各项任务。'
-        ],
-        growth: [
-          '了解并参与 AI Agent 从 0 到 1 的完整过程。',
-          '深度参与 AI 基础设施建设与 AI 应用工程研发，系统性提升 AI 工程能力，提升核心竞争力。'
-        ]
-      },
-      {
-        id: 'algo',
-        name: '算法研发实习生 / 工程师',
-        duties: [
-          '负责量子算法（如 VQE、QAOA、量子模拟等）的调研、设计与实现。',
-          '集成和优化现有成熟量子计算工具集（如 Qiskit、Cirq、PennyLane、TensorFlow Quantum 等），实现算法模块化、流程自动化。',
-          '跟踪量子计算前沿进展，评估新算法 / 新工具在材料问题中的适用性，支撑技术路线选型。'
-        ],
-        requirements: [
-          '学历背景：凝聚态物理、计算物理、理论物理、量子化学或相关专业硕士及以上学历（211）。',
-          '工具经验：熟悉至少一种量子计算框架（如 Qiskit、Cirq、PennyLane、ProjectQ 等）。',
-          '编程能力：熟练使用 Python / C++，具备良好的代码规范与工程化意识；熟悉 Linux 开发环境。'
-        ],
-        growth: []
-      },
-      {
-        id: 'materials',
-        name: '材料计算实习生 / 工程师',
-        duties: [
-          '基于第一性原理（DFT）、量子化学，开展材料体系电子结构研究（磁性、拓扑、超导等性质计算，有量子背景为加分项）。'
-        ],
-        requirements: [
-          '学历背景：凝聚态物理、计算材料物理、理论物理、量子化学或相关专业硕士及以上学历（211）。',
-          '固体物理或量子化学基础，熟悉至少一种材料计算或量子化学方法（如 DFT/VASP、Quantum ESPRESSO、Gaussian、PySCF 等）。'
-        ],
-        growth: []
-      }
-    ];
-
-    // ---------- 渲染岗位卡片与详情面板 ----------
-    var grid = document.getElementById('jobGrid');
-    var panelsWrap = document.getElementById('jobPanels');
-    var cards = [];
-    var panels = [];
-
-    function listHTML(items) {
-      return items.map(function (t) { return '<li>' + t + '</li>'; }).join('');
-    }
-
-    function panelHTML(job) {
-      var blocks =
-        '<section class="job-block"><h4 class="job-block__title">岗位职责</h4><ul class="job-block__list">' + listHTML(job.duties) + '</ul></section>' +
-        '<section class="job-block"><h4 class="job-block__title">任职要求</h4><ul class="job-block__list">' + listHTML(job.requirements) + '</ul></section>' +
-        '<section class="job-block"><h4 class="job-block__title">学习收获</h4>' + (job.growth.length ? '<ul class="job-block__list">' + listHTML(job.growth) + '</ul>' : '<p>—</p>') + '</section>';
-      return (
-        '<div class="job-panel__head">' +
-          '<div class="job-panel__head-main">' +
-            '<span class="job-panel__kicker">职位名称</span>' +
-            '<h3 class="job-panel__title">' + job.name + '</h3>' +
-          '</div>' +
-        '</div>' +
-        '<div class="job-panel__grid">' + blocks + '</div>'
-      );
-    }
-
-    JOBS.forEach(function (job, i) {
-      var card = document.createElement('button');
-      card.type = 'button';
-      card.className = 'job-card' + (i === 0 ? ' active' : '');
-      card.setAttribute('role', 'tab');
-      card.setAttribute('aria-selected', String(i === 0));
-      card.setAttribute('aria-controls', 'jobDetail');
-      card.setAttribute('data-job', job.id);
-      var nameEl = document.createElement('span');
-      nameEl.className = 'job-card__name';
-      nameEl.textContent = job.name;
-      card.appendChild(nameEl);
-      grid.appendChild(card);
-      cards.push(card);
-
-      var panel = document.createElement('article');
-      panel.className = 'job-panel';
-      panel.setAttribute('data-job-panel', job.id);
-      if (i !== 0) panel.hidden = true;
-      panel.innerHTML = panelHTML(job);
-      panelsWrap.appendChild(panel);
-      panels.push(panel);
-    });
-
-    // ---------- 岗位卡片：点击切换详情 ----------
-    var detail = document.getElementById('jobDetail');
-
-    function showPanel(jobId) {
+    function apply() {
+      var visibleCount = 0;
       panels.forEach(function (panel) {
-        var isTarget = panel.getAttribute('data-job-panel') === jobId;
-        panel.hidden = !isTarget;
-        if (isTarget && !reduceMotion) {
-          panel.classList.remove('job-panel--show');
-          void panel.offsetWidth; // 重新触发入场动画
-          panel.classList.add('job-panel--show');
-        }
-      });
-    }
-
-    cards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        var jobId = card.getAttribute('data-job');
-        var isOpen = detail.classList.contains('open');
-        var isCurrent = card.classList.contains('active');
-        if (isOpen && isCurrent) {
-          detail.classList.remove('open'); // 再次点击收起详情
-          return;
-        }
-        cards.forEach(function (c) {
-          var on = c === card;
-          c.classList.toggle('active', on);
-          c.setAttribute('aria-selected', String(on));
+        var isActive = panel.getAttribute('data-dept-panel') === currentDept;
+        panel.hidden = !isActive;
+        if (!isActive) return;
+        Array.prototype.slice.call(panel.querySelectorAll('.jr-row')).forEach(function (row) {
+          var show = currentFilter === 'all' || row.getAttribute('data-status') === currentFilter;
+          row.hidden = !show;
+          if (show) visibleCount++;
         });
-        detail.classList.add('open');
-        showPanel(jobId);
+      });
+      if (empty) empty.hidden = visibleCount > 0;
+    }
+
+    deptBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        currentDept = btn.getAttribute('data-dept');
+        deptBtns.forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', String(on));
+        });
+        if (title) title.textContent = btn.getAttribute('data-name');
+        if (meta) meta.textContent = btn.getAttribute('data-meta');
+        apply();
       });
     });
 
-    // 页面加载时为默认岗位添加入场动画
-    if (cards.length) {
-      showPanel(cards[0].getAttribute('data-job'));
-    }
-
-    // ---------- 招聘海报：点击放大 ----------
-    var modal = document.getElementById('posterModal');
-    var openModal = function () {
-      if (!modal) return;
-      modal.classList.add('open');
-      document.body.classList.add('modal-open');
-    };
-    var closeModal = function () {
-      if (!modal) return;
-      modal.classList.remove('open');
-      document.body.classList.remove('modal-open');
-    };
-    [document.getElementById('posterImg'), document.getElementById('posterZoom')].forEach(function (el) {
-      if (el) el.addEventListener('click', openModal);
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        currentFilter = btn.getAttribute('data-filter');
+        filterBtns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+        apply();
+      });
     });
-    if (modal) {
-      modal.querySelectorAll('[data-poster-close]').forEach(function (el) {
-        el.addEventListener('click', closeModal);
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeModal();
-      });
-    }
+
+    if (deptBtns.length && meta) meta.textContent = deptBtns[0].getAttribute('data-meta');
+    apply();
   })();
   </script>
 </body>
